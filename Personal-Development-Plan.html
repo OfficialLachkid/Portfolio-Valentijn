@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Development Plan – Valentijn Jacobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal Development Plan, research and visuals for Studio Dark Tech." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: #0f172a;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Header / Nav (same style as main site) */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 1.75rem 2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    /* Horizontal scroll rows */
+
+    .scroll-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin: 0 -0.5rem;
+      padding-left: 0.5rem;
+      scroll-snap-type: x proximity;
+    }
+
+    .scroll-row::-webkit-scrollbar {
+      height: 6px;
+    }
+    .scroll-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-row::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+    }
+
+    .row-card {
+      flex: 0 0 260px; /* width of each “tile” */
+      scroll-snap-align: start;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.95rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .link-chip {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .link-chip::before {
+      content: "↗";
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        border-radius: 16px;
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-avatar">VJ</div>
+        <div>Valentijn Jacobs</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#pdp">PDP</a>
+        <a href="#research">Research</a>
+        <a href="#images">Images</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- PERSONAL DEVELOPMENT PLAN -->
+      <section id="pdp">
+        <div class="section-header">
+          <h2 class="section-title">Personal Development Plan</h2>
+          <p class="section-subtitle">
+            High-level and in-depth documents describing my development goals and progress during Studio Dark Tech.
+            Swipe or scroll horizontally to browse.
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <!-- Broad overview -->
+          <a class="row-card" href="docs/Personal_Development_Plan_Studio_Dark-Tech.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">PDP – Overview</h3>
+                <span class="card-tag">Document</span>
+              </div>
+              <div class="card-body">
+                Broad overview of my personal development goals, focus areas and learning objectives within Studio Dark Tech.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- In-depth PDP -->
+          <a class="row-card" href="docs/Personal_Development_Plan_Studio_Dark-Tech_Detailed.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">PDP – Detailed</h3>
+                <span class="card-tag">Document</span>
+              </div>
+              <div class="card-body">
+                More detailed breakdown of tasks, milestones and reflections on my growth during the project.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <!-- RESEARCH -->
+      <section id="research">
+        <div class="section-header">
+          <h2 class="section-title">Research</h2>
+          <p class="section-subtitle">
+            Research documents split into smaller parts to keep them focused and readable. Includes work on chatbots, voice chatbots and workflows.
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <!-- Chatbot research -->
+          <a class="row-card" href="docs/Research_Chatbot.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Chatbot</h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-body">
+                Research into building and integrating a chatbot for the project, including requirements and design choices.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Voice chatbot research -->
+          <a class="row-card" href="docs/Research_VoiceChatbot.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Voice Chatbot</h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-body">
+                Exploration of voice interaction, technology choices and how it can support the Dark Tech experience.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- AI Face Recognition -->
+          <a class="row-card" href="docs/Research_VoiceChatbot.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Facial Recognition</h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-body">
+                Exploration of using AI to track users looking at something.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Workflow research -->
+          <a class="row-card" href="docs/Research_Workflows.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Workflows</h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-body">
+                Research into workflows, automation and how AI fits into the overall process for Studio Dark Tech.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <!-- IMAGES -->
+      <section id="images">
+        <div class="section-header">
+          <h2 class="section-title">Images</h2>
+          <p class="section-subtitle">
+            Visuals that support the written documents: diagrams, screenshots and other images that clarify how things work.
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <!-- Example image tiles – link to full-size images or a gallery -->
+          <a class="row-card" href="images/pdp-overview.png" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">PDP Overview Diagram</h3>
+                <span class="card-tag">Image</span>
+              </div>
+              <div class="card-body">
+                High-level diagram showing my main development goals and how they connect.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>View image</span></span>
+              </div>
+            </article>
+          </a>
+
+          <a class="row-card" href="images/chatbot-flow.png" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Chatbot Flow</h3>
+                <span class="card-tag">Image</span>
+              </div>
+              <div class="card-body">
+                Flowchart of the chatbot conversation and decision points.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>View image</span></span>
+              </div>
+            </article>
+          </a>
+
+          <a class="row-card" href="images/workflow-overview.png" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Workflow Overview</h3>
+                <span class="card-tag">Image</span>
+              </div>
+              <div class="card-body">
+                Visual overview of how different tools and steps in the Dark Tech workflow connect.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>View image</span></span>
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> VBJ Services
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
