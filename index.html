@@ -339,7 +339,7 @@
 
     .card-image img {
       width: 100%;
-      height: 160px; /* adjust height if you want */
+      height: 160px;
       object-fit: cover;
       display: block;
       transition: transform 0.18s ease, opacity 0.18s ease;
@@ -438,6 +438,33 @@
       text-align: center;
     }
 
+    /* === ANIMATIONS === */
+
+    .fade-in-up,
+    .slide-in-left {
+      opacity: 0;
+    }
+
+    .fade-in-up {
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     /* Responsive tweaks */
 
     @media (max-width: 768px) {
@@ -481,7 +508,7 @@
 <body>
   <div class="page">
     <!-- Header / Nav -->
-    <header>
+    <header class="fade-in-up">
       <div class="brand">
         <div class="brand-avatar">VJ</div>
         <div>Valentijn Jacobs</div>
@@ -497,7 +524,7 @@
 
     <main>
       <!-- HERO -->
-      <section class="hero" id="about">
+      <section class="hero fade-in-up" id="about">
         <div class="hero-main">
           <h1>Valentijn Jacobs</h1>
           <p class="hero-tagline">
@@ -507,8 +534,8 @@
 
           <div class="hero-meta">
             <div class="pill pill-accent">Portfolio</div>
-            <div class="pill">Games & Findings</div>
-            <div class="pill">GitHub · itch.io</div>
+            <div class="pill">Documents & Findings</div>
+            <div class="pill">Games – Itch.io</div>
           </div>
 
           <div class="hero-actions">
@@ -550,7 +577,7 @@
       </section>
 
       <!-- PORTFOLIO PROJECTS -->
-      <section id="portfolio">
+      <section id="portfolio" class="fade-in-up">
         <div class="section-header">
           <h2 class="section-title">Portfolio</h2>
           <p class="section-subtitle">
@@ -559,33 +586,29 @@
         </div>
 
         <div class="grid grid-3">
-          <!-- Example project card -->
-          <div class="grid grid-3">
-        <!-- Personal Development Plan card -->
-        <a href="Personal-Development-Plan.html" style="text-decoration:none; color:inherit;">
-            <article class="card">
-            <div class="card-header">
-                <h3 class="card-title">Personal Development Plan - Studio Dark Tech</h3>
+          <!-- Personal Development Plan card -->
+          <a href="Personal-Development-Plan.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-header">
+                <h3 class="card-title">Personal Development Plan – Studio Dark Tech</h3>
                 <span class="card-tag">Project</span>
-            </div>
-            <div class="card-body">
-                This section collects my personal development plan, research, and supporting material for Studio Dark Tech.
-            </div>
-            <div class="card-footer">
+              </div>
+              <div class="card-body">
+                Overview of my personal development plan, research, and supporting material for Studio Dark Tech.
+              </div>
+              <div class="card-footer">
                 <span class="link-chip"><span>Open overview</span></span>
-            </div>
+              </div>
             </article>
-        </a>
-        </div>
+          </a>
 
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-header">
-              <h3 class="card-title">Project Title #2</h3>
+              <h3 class="card-title">Audio Research</h3>
               <span class="card-tag">Prototype</span>
             </div>
             <div class="card-body">
-              Briefly describe the prototype / experiment and why it’s in your
-              portfolio.
+              Brief description of an audio-related prototype / experiment and why it’s in the portfolio.
             </div>
             <div class="card-footer">
               <a class="link-chip" href="#" target="_blank">
@@ -597,7 +620,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-header">
               <h3 class="card-title">Project Title #3</h3>
               <span class="card-tag">Research</span>
@@ -619,7 +642,7 @@
       </section>
 
       <!-- DOCUMENTS / FINDINGS -->
-      <section id="documents">
+      <section id="documents" class="fade-in-up">
         <div class="section-header">
           <h2 class="section-title">Documents & Findings</h2>
           <p class="section-subtitle">
@@ -628,7 +651,7 @@
         </div>
 
         <div class="grid grid-2">
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-header">
               <h3 class="card-title">Finding / Report #1</h3>
               <span class="card-tag">PDF</span>
@@ -643,7 +666,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-header">
               <h3 class="card-title">Finding / Note #2</h3>
               <span class="card-tag">Note</span>
@@ -654,7 +677,7 @@
             </div>
             <div class="card-footer">
               <a class="link-chip" href="Docs/note2.md" target="_blank">
-                <span>View notes</span>
+                <span>View notes (raw)</span>
               </a>
             </div>
           </article>
@@ -662,7 +685,7 @@
       </section>
 
       <!-- GAMES -->
-      <section id="games">
+      <section id="games" class="fade-in-up">
         <div class="section-header">
           <h2 class="section-title">Games</h2>
           <p class="section-subtitle">
@@ -673,7 +696,7 @@
 
         <div class="grid grid-3">
           <!-- Money: The Energy Transition -->
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/money-the-energy-transition" target="_blank">
                 <img src="Images/Money_The_Energy_Transition_Game_Cover.png" alt="Money: The Energy Transition cover" />
@@ -684,11 +707,12 @@
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              A game about the flow of money and making decisions about cash, debt & assets.
+              A game about the flow of money and making decisions about cash, debt &amp; assets.
+            </div>
           </article>
 
           <!-- Pirates Treasure Hunt -->
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/piratestreasurehunt" target="_blank">
                 <img src="Images/Pirates_Treasure_Hunt_Game_Cover.png" alt="Pirates Treasure Hunt cover" />
@@ -699,13 +723,13 @@
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Pirates' Treasure Hunt  is a shooter game. 
-              Attack and defeat roaming enemies to obtain their loot. Seek out all treasures and become the ruler of the seas!
+              Pirates' Treasure Hunt is a shooter game. Attack and defeat roaming enemies to obtain their loot.
+              Seek out all treasures and become the ruler of the seas!
             </div>
           </article>
 
           <!-- Cancer Crush -->
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/cancer-crushv4" target="_blank">
                 <img src="Images/Cancer_Crush_Game_Cover.png" alt="Cancer Crush cover" />
@@ -720,7 +744,7 @@
           </article>
 
           <!-- Celestial Collapse -->
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/celestial-collapse" target="_blank">
                 <img src="Images/Celestial_Collapse_Game_Cover.png" alt="Celestial Collapse cover" />
@@ -731,12 +755,12 @@
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              An alien mothership tries to take over Earth. Try your best to expel this enemy force to bring peace to Earth again! Bullet Hell
+              An alien mothership tries to take over Earth. Expel this enemy force to bring peace to Earth again!
             </div>
           </article>
 
           <!-- Paranormal Well -->
-          <article class="card">
+          <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/paranormal-well" target="_blank">
                 <img src="Images/Paranormal_Well_Game_Cover.png" alt="Paranormal Well cover" />
@@ -747,36 +771,15 @@
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              You've fallen into a mysterious well,  surrounded by Zombie Plants. Your only option is to build a long enough ladder,  made from enemy materials,  to get out as fast as you can!
-              Game Jam - Theme: Roots
+              You've fallen into a mysterious well surrounded by zombie plants. Build a ladder from enemy materials to escape!
+              Game Jam – Theme: Roots.
             </div>
           </article>
-
-          <!-- All games overview -->
-          <!-- <article class="card">
-            <div class="card-image">
-              <a href="https://lachkid-official.itch.io/" target="_blank">
-                <img src="Images/itchio-all-games.jpg" alt="Overview of all games on itch.io" />
-              </a>
-            </div>
-            <div class="card-header">
-              <h3 class="card-title">All Games on itch.io</h3>
-              <span class="card-tag">Overview</span>
-            </div>
-            <div class="card-body">
-              Complete overview of all my games, prototypes, and experiments on itch.io.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/" target="_blank">
-                <span>Go to itch.io page</span>
-              </a>
-            </div>
-          </article> -->
         </div>
       </section>
 
       <!-- CONTACT -->
-      <section id="contact">
+      <section id="contact" class="fade-in-up">
         <div class="section-header">
           <h2 class="section-title">Contact</h2>
           <p class="section-subtitle">
@@ -811,7 +814,7 @@
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card fade-in-up">
             <div class="card-header">
               <h3 class="card-title">What you’ll find here</h3>
             </div>
@@ -833,8 +836,31 @@
   </div>
 
   <script>
-    // Simple script to keep year up to date
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener('DOMContentLoaded', function () {
+      // Year
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      function revealStaggered(selector, baseDelay, step) {
+        var nodes = document.querySelectorAll(selector);
+        nodes.forEach(function (el, index) {
+          var delay = baseDelay + index * step;
+          el.style.transitionDelay = delay + 'ms';
+          // Use rAF to ensure styles are applied before adding the class
+          requestAnimationFrame(function () {
+            el.classList.add('is-visible');
+          });
+        });
+      }
+
+      // Small timeout so the browser has painted before we animate
+      setTimeout(function () {
+        revealStaggered('.fade-in-up', 0, 80);
+        revealStaggered('.slide-in-left', 200, 90);
+      }, 50);
+    });
   </script>
 </body>
 </html>
