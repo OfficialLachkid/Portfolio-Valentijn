@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>Valentijn Jacobs – Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Valentijn Jacobs – projects, documents, and findings." />
+  <meta name="description" content="Portfolio of Valentijn Jacobs – projects, documents, and games." />
 
   <style>
     :root {
@@ -324,6 +324,32 @@
       gap: 0.6rem;
     }
 
+    /* Card image on top of games */
+    .card-image {
+      border-radius: 14px;
+      overflow: hidden;
+      margin: -0.25rem -0.25rem 0.65rem;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+    }
+
+    .card-image a {
+      display: block;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 160px; /* adjust height if you want */
+      object-fit: cover;
+      display: block;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .card:hover .card-image img {
+      transform: scale(1.03);
+      opacity: 0.96;
+    }
+
     .card-header {
       display: flex;
       align-items: center;
@@ -379,42 +405,6 @@
       content: "↗";
       font-size: 0.65rem;
       opacity: 0.6;
-    }
-
-    /* (Old image gallery styles, can be re-used later if needed) */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      background: #020617;
-      aspect-ratio: 4 / 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.92;
-    }
-
-    .gallery-caption {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 0.45rem 0.6rem;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
-      font-size: 0.75rem;
     }
 
     /* Contact */
@@ -511,8 +501,8 @@
         <div class="hero-main">
           <h1>Valentijn Jacobs</h1>
           <p class="hero-tagline">
-            HBO-ICT student/developer die experimenten, prototypes, games en andere
-            findings documenteert. Van webprojecten tot WebGL-games in Unity.
+            Bachelor of ICT student and developer documenting experiments, prototypes,
+            games, and other findings. From web projects to WebGL games in Unity.
           </p>
 
           <div class="hero-meta">
@@ -531,15 +521,15 @@
           <div class="hero-highlight-list">
             <div class="hero-highlight-item">
               <span>Highlight</span>
-              <strong>Web & game development projecten</strong>
+              <strong>Web & game development projects</strong>
             </div>
             <div class="hero-highlight-item">
               <span>Focus</span>
-              <strong>Spelervaring + leerervaring combineren</strong>
+              <strong>Combining play and learning experiences</strong>
             </div>
             <div class="hero-highlight-item">
               <span>Currently</span>
-              <strong>Games en AI voor sociale interactie</strong>
+              <strong>Games and AI for social interaction</strong>
             </div>
           </div>
         </div>
@@ -547,14 +537,14 @@
         <aside class="hero-side">
           <h2>About this space</h2>
           <p>
-            Dit portfolio verzamelt projecten, documenten en games die ik tijdens
-            mijn HBO-ICT en daarbuiten heb gemaakt. Een soort archief van dingen
-            die ik bouw, test en leer.
+            This portfolio collects projects, documents, and games I created during
+            my Bachelor of ICT and beyond. It’s a living archive of things I build,
+            test, and learn from.
           </p>
           <ul class="hero-side-list">
-            <li>Speel mijn games in de Games-sectie (via itch.io).</li>
-            <li>Open rapporten en write-ups in Documents.</li>
-            <li>Spring naar code en experimenten via Portfolio.</li>
+            <li>Play my games in the Games section (via itch.io).</li>
+            <li>Open reports and write-ups in Documents.</li>
+            <li>Jump into code and experiments via Portfolio.</li>
           </ul>
         </aside>
       </section>
@@ -569,25 +559,21 @@
         </div>
 
         <div class="grid grid-3">
-          <!-- Project card -->
-          <article class="card">
+          <!-- Example project card -->
+          <a href="docs/Personal_Development_Plan_Studio_Dark-Tech.md" target="_blank" style="text-decoration:none; color:inherit;">
+        <article class="card">
             <div class="card-header">
-              <h3 class="card-title">Project Title #1</h3>
-              <span class="card-tag">Project</span>
+            <h3 class="card-title">Personal Development Plan - Studio Dark Tech</h3>
+            <span class="card-tag">Project</span>
             </div>
             <div class="card-body">
-              Short description of what this project is, what you tried, and
-              the main outcome or result.
+            This document outlines my personal development plan during the fourth HvA year in Studio Dark Tech regarding the implementation of AI.
             </div>
             <div class="card-footer">
-              <a class="link-chip" href="https://github.com/OfficialLachkid" target="_blank">
-                <span>GitHub Repo</span>
-              </a>
-              <a class="link-chip" href="docs/project1-report.pdf" target="_blank">
-                <span>Report (PDF)</span>
-              </a>
+            <span class="link-chip"><span>Open Document</span></span>
             </div>
-          </article>
+        </article>
+        </a>
 
           <article class="card">
             <div class="card-header">
@@ -595,7 +581,7 @@
               <span class="card-tag">Prototype</span>
             </div>
             <div class="card-body">
-              Describe briefly the prototype / experiment and why it’s in your
+              Briefly describe the prototype / experiment and why it’s in your
               portfolio.
             </div>
             <div class="card-footer">
@@ -614,8 +600,8 @@
               <span class="card-tag">Research</span>
             </div>
             <div class="card-body">
-              A small research, test or analysis. Summarize the key question and
-              what you found out.
+              Small research, test, or analysis. Summarise the key question and
+              what you found.
             </div>
             <div class="card-footer">
               <a class="link-chip" href="#" target="_blank">
@@ -634,7 +620,7 @@
         <div class="section-header">
           <h2 class="section-title">Documents & Findings</h2>
           <p class="section-subtitle">
-            Reports, write-ups, and other artifacts you want to highlight.
+            Reports, write-ups, and other artifacts I want to highlight.
           </p>
         </div>
 
@@ -660,7 +646,7 @@
               <span class="card-tag">Note</span>
             </div>
             <div class="card-body">
-              Summary of an experiment, user test, or any other learning you want
+              Summary of an experiment, user test, or any other learning I want
               to document.
             </div>
             <div class="card-footer">
@@ -677,101 +663,112 @@
         <div class="section-header">
           <h2 class="section-title">Games</h2>
           <p class="section-subtitle">
-            Kleine games die ik als HBO-ICT student en tijdens game jams heb gemaakt.
-            Ze draaien in de browser via itch.io (WebGL).
+            Small browser games I made as a Bachelor of ICT student.
+            They run in the browser via itch.io (WebGL).
           </p>
         </div>
 
         <div class="grid grid-3">
+          <!-- Money: The Energy Transition -->
           <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/money-the-energy-transition" target="_blank">
+                <img src="images/Money_The_Energy_Transition_Game_Cover.png" alt="Money: The Energy Transition cover" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Money: The Energy Transition</h3>
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Een game rond de energietransitie en keuzes maken met geld en energie.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/money-the-energy-transition" target="_blank">
-                <span>Play on itch.io</span>
-              </a>
-            </div>
+              A game about the flow of money and making decisions about cash, debt & assets.
           </article>
 
+          <!-- Pirates Treasure Hunt -->
           <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/piratestreasurehunt" target="_blank">
+                <img src="images/Pirates_Treasure_Hunt_Game_Cover.png" alt="Pirates Treasure Hunt cover" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Pirates Treasure Hunt</h3>
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Zoek naar schatten als piraat, ontwijk gevaren en verken het eiland.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/piratestreasurehunt" target="_blank">
-                <span>Play on itch.io</span>
-              </a>
+              Pirates' Treasure Hunt  is a shooter game. 
+              Attack and defeat roaming enemies to obtain their loot. Seek out all treasures and become the ruler of the seas!
             </div>
           </article>
 
+          <!-- Cancer Crush -->
           <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/cancer-crushv4" target="_blank">
+                <img src="images/Cancer_Crush_Game_Cover.png" alt="Cancer Crush cover" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Cancer Crush</h3>
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Een serieuze game rondom kanker, in een toegankelijk en speels format.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/cancer-crushv4" target="_blank">
-                <span>Play on itch.io</span>
-              </a>
-            </div>
+              A serious game about human cells and their differences, presented in an accessible and playful format.
           </article>
 
+          <!-- Celestial Collapse -->
           <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/celestial-collapse" target="_blank">
+                <img src="images/Celestial_Collapse_Game_Cover.png" alt="Celestial Collapse cover" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Celestial Collapse</h3>
               <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Snelle arcade-achtige actie in de ruimte, met vallende objecten en chaos.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/celestial-collapse" target="_blank">
-                <span>Play on itch.io</span>
-              </a>
+              An alien mothership tries to take over Earth. Try your best to expel this enemy force to bring peace to Earth again! Bullet Hell
             </div>
           </article>
 
+          <!-- Paranormal Well -->
           <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/paranormal-well" target="_blank">
+                <img src="images/Paranormal_Well_Game_Cover.png" alt="Paranormal Well cover" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">Paranormal Well</h3>
-              <span class="card-tag">Game Jam</span>
+              <span class="card-tag">WebGL</span>
             </div>
             <div class="card-body">
-              Game jam project met een paranormale twist rondom een mysterieuze put.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="https://lachkid-official.itch.io/paranormal-well" target="_blank">
-                <span>Play on itch.io</span>
-              </a>
+              You've fallen into a mysterious well,  surrounded by Zombie Plants. Your only option is to build a long enough ladder,  made from enemy materials,  to get out as fast as you can!
+              Game Jam - Theme: Roots
             </div>
           </article>
 
-          <article class="card">
+          <!-- All games overview -->
+          <!-- <article class="card">
+            <div class="card-image">
+              <a href="https://lachkid-official.itch.io/" target="_blank">
+                <img src="images/itchio-all-games.jpg" alt="Overview of all games on itch.io" />
+              </a>
+            </div>
             <div class="card-header">
               <h3 class="card-title">All Games on itch.io</h3>
               <span class="card-tag">Overview</span>
             </div>
             <div class="card-body">
-              Complete overzicht van al mijn games, prototypes en experimenten op itch.io.
+              Complete overview of all my games, prototypes, and experiments on itch.io.
             </div>
             <div class="card-footer">
               <a class="link-chip" href="https://lachkid-official.itch.io/" target="_blank">
                 <span>Go to itch.io page</span>
               </a>
             </div>
-          </article>
+          </article> -->
         </div>
       </section>
 
