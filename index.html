@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentijn Jacobs – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Valentijn Jacobs – projects, documents, and findings." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: #0f172a;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Header / Nav */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    nav a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    /* Section layout */
+
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 1.75rem 2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    section:not(:first-of-type) {
+      background: linear-gradient(145deg, #020617, #020617 30%, #030712);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-main h1 {
+      font-size: clamp(2.3rem, 4vw, 2.8rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      border-radius: 999px;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .pill-accent {
+      background: radial-gradient(circle, #38bdf8, #0ea5e9 50%, #1e40af);
+      color: #0b1120;
+      border: none;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: transform 0.06s ease, box-shadow 0.12s ease,
+        background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 30% 0%, #38bdf8, #0ea5e9 30%, #1e40af);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #020617;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    .btn-primary:hover {
+      border-color: rgba(56, 189, 248, 1);
+    }
+
+    .hero-highlight-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .hero-highlight-item {
+      padding: 0.75rem 0.8rem;
+      border-radius: var(--radius-lg);
+      border: 1px dashed rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .hero-highlight-item span {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-highlight-item strong {
+      font-size: 0.9rem;
+    }
+
+    .hero-side {
+      background: radial-gradient(circle at top, #1d283a, #020617 60%);
+      border-radius: var(--radius-xl);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-side h2 {
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-side p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-side-list {
+      list-style: none;
+      font-size: 0.85rem;
+      display: grid;
+      gap: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .hero-side-list li::before {
+      content: "→";
+      opacity: 0.6;
+      margin-right: 0.5rem;
+    }
+
+    /* Grid helpers */
+
+    .grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    /* Cards */
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.95rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .link-chip {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .link-chip span {
+      font-size: 0.85rem;
+    }
+
+    .link-chip::before {
+      content: "↗";
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    /* (Old image gallery styles, can be re-used later if needed) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      aspect-ratio: 4 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.92;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.45rem 0.6rem;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+      font-size: 0.75rem;
+    }
+
+    /* Contact */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 1.5rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-list li span {
+      display: inline-block;
+      width: 90px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Responsive tweaks */
+
+    @media (max-width: 768px) {
+      header {
+        border-radius: 16px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-meta {
+        flex-direction: column;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <!-- Header / Nav -->
+    <header>
+      <div class="brand">
+        <div class="brand-avatar">VJ</div>
+        <div>Valentijn Jacobs</div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#documents">Documents</a>
+        <a href="#games">Games</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="about">
+        <div class="hero-main">
+          <h1>Valentijn Jacobs</h1>
+          <p class="hero-tagline">
+            HBO-ICT student/developer die experimenten, prototypes, games en andere
+            findings documenteert. Van webprojecten tot WebGL-games in Unity.
+          </p>
+
+          <div class="hero-meta">
+            <div class="pill pill-accent">Portfolio</div>
+            <div class="pill">Games & Findings</div>
+            <div class="pill">GitHub · itch.io</div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="docs/CV.pdf" target="_blank">
+              Download CV (PDF)
+            </a>
+            <a class="btn" href="#portfolio">View portfolio ↓</a>
+          </div>
+
+          <div class="hero-highlight-list">
+            <div class="hero-highlight-item">
+              <span>Highlight</span>
+              <strong>Web & game development projecten</strong>
+            </div>
+            <div class="hero-highlight-item">
+              <span>Focus</span>
+              <strong>Spelervaring + leerervaring combineren</strong>
+            </div>
+            <div class="hero-highlight-item">
+              <span>Currently</span>
+              <strong>Games en AI voor sociale interactie</strong>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <h2>About this space</h2>
+          <p>
+            Dit portfolio verzamelt projecten, documenten en games die ik tijdens
+            mijn HBO-ICT en daarbuiten heb gemaakt. Een soort archief van dingen
+            die ik bouw, test en leer.
+          </p>
+          <ul class="hero-side-list">
+            <li>Speel mijn games in de Games-sectie (via itch.io).</li>
+            <li>Open rapporten en write-ups in Documents.</li>
+            <li>Spring naar code en experimenten via Portfolio.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- PORTFOLIO PROJECTS -->
+      <section id="portfolio">
+        <div class="section-header">
+          <h2 class="section-title">Portfolio</h2>
+          <p class="section-subtitle">
+            Selected projects with links to code, documents, and results.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Project card -->
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Project Title #1</h3>
+              <span class="card-tag">Project</span>
+            </div>
+            <div class="card-body">
+              Short description of what this project is, what you tried, and
+              the main outcome or result.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://github.com/OfficialLachkid" target="_blank">
+                <span>GitHub Repo</span>
+              </a>
+              <a class="link-chip" href="docs/project1-report.pdf" target="_blank">
+                <span>Report (PDF)</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Project Title #2</h3>
+              <span class="card-tag">Prototype</span>
+            </div>
+            <div class="card-body">
+              Describe briefly the prototype / experiment and why it’s in your
+              portfolio.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="#" target="_blank">
+                <span>Demo / Screenshot</span>
+              </a>
+              <a class="link-chip" href="#" target="_blank">
+                <span>Notes</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Project Title #3</h3>
+              <span class="card-tag">Research</span>
+            </div>
+            <div class="card-body">
+              A small research, test or analysis. Summarize the key question and
+              what you found out.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="#" target="_blank">
+                <span>Findings</span>
+              </a>
+              <a class="link-chip" href="#" target="_blank">
+                <span>Source files</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- DOCUMENTS / FINDINGS -->
+      <section id="documents">
+        <div class="section-header">
+          <h2 class="section-title">Documents & Findings</h2>
+          <p class="section-subtitle">
+            Reports, write-ups, and other artifacts you want to highlight.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Finding / Report #1</h3>
+              <span class="card-tag">PDF</span>
+            </div>
+            <div class="card-body">
+              One or two lines explaining what this document covers and why it’s useful.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="docs/report1.pdf" target="_blank">
+                <span>Open PDF</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Finding / Note #2</h3>
+              <span class="card-tag">Note</span>
+            </div>
+            <div class="card-body">
+              Summary of an experiment, user test, or any other learning you want
+              to document.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="docs/note2.md" target="_blank">
+                <span>View notes</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- GAMES -->
+      <section id="games">
+        <div class="section-header">
+          <h2 class="section-title">Games</h2>
+          <p class="section-subtitle">
+            Kleine games die ik als HBO-ICT student en tijdens game jams heb gemaakt.
+            Ze draaien in de browser via itch.io (WebGL).
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Money: The Energy Transition</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Een game rond de energietransitie en keuzes maken met geld en energie.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/money-the-energy-transition" target="_blank">
+                <span>Play on itch.io</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Pirates Treasure Hunt</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Zoek naar schatten als piraat, ontwijk gevaren en verken het eiland.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/piratestreasurehunt" target="_blank">
+                <span>Play on itch.io</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Cancer Crush</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Een serieuze game rondom kanker, in een toegankelijk en speels format.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/cancer-crushv4" target="_blank">
+                <span>Play on itch.io</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Celestial Collapse</h3>
+              <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+              Snelle arcade-achtige actie in de ruimte, met vallende objecten en chaos.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/celestial-collapse" target="_blank">
+                <span>Play on itch.io</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Paranormal Well</h3>
+              <span class="card-tag">Game Jam</span>
+            </div>
+            <div class="card-body">
+              Game jam project met een paranormale twist rondom een mysterieuze put.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/paranormal-well" target="_blank">
+                <span>Play on itch.io</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">All Games on itch.io</h3>
+              <span class="card-tag">Overview</span>
+            </div>
+            <div class="card-body">
+              Complete overzicht van al mijn games, prototypes en experimenten op itch.io.
+            </div>
+            <div class="card-footer">
+              <a class="link-chip" href="https://lachkid-official.itch.io/" target="_blank">
+                <span>Go to itch.io page</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Ways to reach me or explore my work further.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
+              Feel free to reach out for collaboration, feedback, or if you’re
+              curious about any of the findings in this portfolio.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <span>Email</span>
+                <a href="mailto:valentijnjacobs@me.com">valentijnjacobs@me.com</a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://github.com/OfficialLachkid" target="_blank">
+                  github.com/OfficialLachkid
+                </a>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://nl.linkedin.com/in/valentijn-jacobs-1949a7295" target="_blank">
+                  My LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">What you’ll find here</h3>
+            </div>
+            <div class="card-body">
+              <ul style="list-style: disc; padding-left: 1rem; font-size: 0.85rem;">
+                <li>Project overviews with direct links to code and documents.</li>
+                <li>Games and prototypes you can play via itch.io.</li>
+                <li>Notes and findings from experiments, tests, or research.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> VBJ Services
+    </footer>
+  </div>
+
+  <script>
+    // Simple script to keep year up to date
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
