@@ -33,6 +33,7 @@
       background: radial-gradient(circle at top left, #1e293b, #020617 50%);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden; /* prevent horizontal chop on small screens */
     }
 
     a {
@@ -43,6 +44,7 @@
     img {
       max-width: 100%;
       display: block;
+      height: auto;
     }
 
     .page {
@@ -92,6 +94,7 @@
       display: flex;
       gap: 1.25rem;
       font-size: 0.9rem;
+      flex-wrap: nowrap;
     }
 
     nav a {
@@ -99,6 +102,7 @@
       padding: 0.25rem 0.4rem;
       border-radius: 999px;
       transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
     }
 
     nav a:hover {
@@ -484,6 +488,10 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .page {
+        padding: 1.25rem 1rem 3rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -499,7 +507,21 @@
 
       nav {
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
+        flex-wrap: wrap;              /* allow nav to wrap on very small screens */
+        gap: 0.5rem 0.9rem;           /* tighter gaps so it doesn’t feel cramped */
+      }
+
+      .page {
+        padding: 1.25rem 0.9rem 3rem; /* slightly less side padding on tiny screens */
+      }
+
+      section {
+        padding: 1.4rem 1.25rem 1.75rem;
+      }
+
+      .hero-side {
+        margin-top: 1.25rem;
       }
     }
   </style>
@@ -741,6 +763,7 @@
             </div>
             <div class="card-body">
               A serious game about human cells and their differences, presented in an accessible and playful format.
+            </div>
           </article>
 
           <!-- Celestial Collapse -->

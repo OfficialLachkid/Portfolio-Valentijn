@@ -33,6 +33,7 @@
       background: radial-gradient(circle at top left, #1e293b, #020617 50%);
       color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden; /* avoid horizontal scroll on small screens */
     }
 
     a {
@@ -43,6 +44,7 @@
     img {
       max-width: 100%;
       display: block;
+      height: auto;
     }
 
     .page {
@@ -92,6 +94,7 @@
       display: flex;
       gap: 1.25rem;
       font-size: 0.9rem;
+      flex-wrap: nowrap;
     }
 
     nav a {
@@ -99,6 +102,7 @@
       padding: 0.25rem 0.4rem;
       border-radius: 999px;
       transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
     }
 
     nav a:hover {
@@ -279,6 +283,37 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .page {
+        padding: 1.25rem 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.9rem;
+      }
+
+      .page {
+        padding: 1.25rem 0.9rem 3rem;
+      }
+
+      section {
+        padding: 1.4rem 1.25rem 1.75rem;
+      }
+
+      .row-card {
+        flex: 0 0 80%;  /* show most of the card and invite horizontal scroll */
+        max-width: 320px;
+      }
     }
   </style>
 </head>
@@ -364,9 +399,6 @@
               <div class="card-body">
                 Research into building and integrating a chatbot for the project, including requirements and design choices.
               </div>
-              <!-- <div class="card-footer">
-                <span class="link-chip"><span>Open document</span></span>
-              </div> -->
             </article>
           </a>
 
@@ -380,9 +412,6 @@
               <div class="card-body">
                 Exploration of voice interaction, technology choices and how it can support the Dark Tech experience.
               </div>
-              <!-- <div class="card-footer">
-                <span class="link-chip"><span>Open document</span></span>
-              </div> -->
             </article>
           </a>
 
@@ -396,9 +425,6 @@
               <div class="card-body">
                 Exploration of using AI to track users looking at something.
               </div>
-              <!-- <div class="card-footer">
-                <span class="link-chip"><span>Open document</span></span>
-              </div> -->
             </article>
           </a>
 
@@ -412,9 +438,6 @@
               <div class="card-body">
                 Research about hosting n8n locally on thin client hardware, using Docker and Cloudflare Tunnel for remote access. Document covers cost, savings and required setup steps.
               </div>
-              <!-- <div class="card-footer">
-                <span class="link-chip"><span>Open document</span></span>
-              </div> -->
             </article>
           </a>
         </div>
