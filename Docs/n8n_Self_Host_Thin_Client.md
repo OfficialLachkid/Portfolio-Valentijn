@@ -99,6 +99,10 @@ Running n8n on the HP t630 gives me a quiet, low-power, always-on automation ser
 
 ---
 
+## 6. HP Thin Client Cons
+
+---
+
 ## Conclusion
 By installing Windows on the HP t630, running n8n through Docker, and connecting everything through a Cloudflare-managed domain and tunnel, I created a flexible and cost-effective automation environment. This setup offers global access, strong security, and complete control over my automations without any recurring subscription fees. It transforms the thin client into a reliable personal server that is simple to maintain and powerful enough to handle AI-driven workflows.
 
