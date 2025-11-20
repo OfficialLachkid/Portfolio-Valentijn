@@ -17,6 +17,9 @@ To run n8n locally, I used the official repository:
 
 **GitHub:**  
 <https://github.com/n8n-io/self-hosted-ai-starter-kit>
+Helpfull tutorials: 
+- https://www.youtube.com/watch?v=F1psr8uFwUU 
+- https://www.youtube.com/watch?v=cZQPDLgPtNg
 
 I cloned the repository and copied the example environment file:
 
