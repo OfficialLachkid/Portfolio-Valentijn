@@ -82,6 +82,10 @@ Depending on backend setup, tasks are appended to:
 
 Over time, the list grows into a large library of diverse prompts that the website can randomly select from.
 
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Teddy_n8n_Workflow.png" style="width: 100%;" />
+</div>
+
 ---
 
 ## 3. Website & QR Code Flow
