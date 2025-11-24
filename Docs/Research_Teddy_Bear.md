@@ -124,5 +124,5 @@ Teddy uses n8n, AI task generation and a simple QR-code interaction to create a 
 
 <div style="display: flex; gap: 50px;">
   <img src="Images/Sprint1_Prototype/TeddyBear.png" style="width: 33%;" />
-  <img src="Images/Sprint1_Prototype/TeddyBear_QRCode.png" style="width: 60%;" />
+  <img src="Images/Sprint1_Prototype/TeddyBear_QRCode.png" style="width: 50%;" />
 </div>
