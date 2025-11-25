@@ -248,6 +248,83 @@
       text-align: center;
     }
 
+    /* === FILMSTRIP GALLERY (THROWBACK IMAGES) === */
+
+    .filmstrip {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 2.5rem 2rem;
+      margin: 0 -0.5rem;
+      background: #020617;
+      border-radius: 32px;
+      border: 2px solid #1f2937;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      position: relative;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: auto;
+    }
+
+    .filmstrip::-webkit-scrollbar {
+      height: 6px;
+    }
+    .filmstrip::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+      border-radius: 999px;
+    }
+
+    .filmstrip::before,
+    .filmstrip::after {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 10px;
+      background:
+        repeating-linear-gradient(
+          to right,
+          transparent 0 26px,
+          #000 26px 34px
+        );
+      border-radius: 999px;
+      opacity: 0.85;
+    }
+
+    .filmstrip::before {
+      top: 8px;
+    }
+
+    .filmstrip::after {
+      bottom: 8px;
+    }
+
+    .film-frame {
+      flex: 0 0 230px;
+      height: 300px;
+      background: #000;
+      border-radius: 6px;
+      border: 3px solid #111827;
+      padding: 8px;
+      scroll-snap-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .film-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .film-frame:nth-child(odd) {
+      transform: rotate(-1.5deg);
+    }
+    .film-frame:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+
     /* === ANIMATIONS === */
 
     .fade-in-up,
@@ -313,6 +390,10 @@
       .row-card {
         flex: 0 0 80%;  /* show most of the card and invite horizontal scroll */
         max-width: 320px;
+      }
+
+      .film-frame {
+        flex: 0 0 70%;
       }
     }
   </style>
@@ -384,7 +465,7 @@
         <div class="section-header">
           <h2 class="section-title">Research</h2>
           <p class="section-subtitle">
-            Research documents split into smaller parts to keep them focused and readable. Includes work on chatbots, voice chatbots and workflows.
+            Research documents split into smaller parts to keep them focused and readable. Includes work on chatbots, voice chatbots and workflows that kept me busy during this semester.
           </p>
         </div>
 
@@ -513,7 +594,8 @@
           </a>
         </div>
       </section>
-            <!-- THROWBACK IMAGES -->
+
+      <!-- THROWBACK IMAGES AS FILMSTRIP -->
       <section id="throwback-images" class="fade-in-up">
         <div class="section-header">
           <h2 class="section-title">Images</h2>
@@ -523,52 +605,37 @@
           </p>
         </div>
 
-        <div class="scroll-row">
-          <!-- Example image 1 -->
-          <a class="row-card slide-in-left" href="Images/Throwback_1.png" target="_blank">
-            <article class="card">
-              <div class="card-header">
-                <h3 class="card-title">Early Prototype</h3>
-                <span class="card-tag">Image</span>
-              </div>
-              <div class="card-body">
-                One of the earliest prototype screenshots — the starting point of a long journey.
-              </div>
-              <div class="card-footer">
-                <span class="link-chip"><span>View image</span></span>
-              </div>
-            </article>
+        <div class="filmstrip">
+          <a href="Images/Throwback_1.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_1.jpeg" alt="Early Prototype" />
           </a>
 
-          <!-- Example image 2 -->
-          <a class="row-card slide-in-left" href="Images/Throwback_2.png" target="_blank">
-            <article class="card">
-              <div class="card-header">
-                <h3 class="card-title">Brainstorm Session</h3>
-                <span class="card-tag">Image</span>
-              </div>
-              <div class="card-body">
-                Sticky notes, whiteboards & ideation — the fun part of Dark Tech.
-              </div>
-              <div class="card-footer">
-                <span class="link-chip"><span>View image</span></span>
-              </div>
-            </article>
+          <a href="Images/Throwback_2.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_2.jpeg" alt="Brainstorm Session" />
           </a>
-          <!-- Example image 3 -->
-          <a class="row-card slide-in-left" href="Images/Throwback_3.png" target="_blank">
-            <article class="card">
-              <div class="card-header">
-                <h3 class="card-title">Testing Day</h3>
-                <span class="card-tag">Image</span>
-              </div>
-              <div class="card-body">
-                Testing prototypes with peers — the moment things start to come alive.
-              </div>
-              <div class="card-footer">
-                <span class="link-chip"><span>View image</span></span>
-              </div>
-            </article>
+
+          <a href="Images/Throwback_3.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_3.jpeg" alt="Testing Day" />
+          </a>
+
+          <a href="Images/Throwback_4.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_4.jpeg" alt="Testing Day" />
+          </a>
+
+          <a href="Images/Throwback_5.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_5.jpeg" alt="Testing Day" />
+          </a>
+
+          <a href="Images/Throwback_6.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_6.jpeg" alt="Testing Day" />
+          </a>
+
+          <a href="Images/Throwback_7.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_7.jpeg" alt="Testing Day" />
+          </a>
+
+          <a href="Images/Throwback_8.jpeg" target="_blank" class="film-frame">
+            <img src="Images/Throwback_8.jpeg" alt="Testing Day" />
           </a>
         </div>
       </section>
@@ -601,6 +668,60 @@
         revealStaggered('.fade-in-up', 0, 80);
         revealStaggered('.slide-in-left', 200, 90);
       }, 50);
+
+      /* === SIMPLE CAROUSEL (SLIDE-BY-SLIDE) FOR FILMSTRIP === */
+
+      var strip = document.querySelector('.filmstrip');
+      if (strip) {
+        var frames = Array.prototype.slice.call(strip.querySelectorAll('.film-frame'));
+        if (frames.length > 1) {
+          var currentIndex = 0;
+          var autoplayDelay = 1500; // ms between slides
+          var userPauseMs = 2000;   // pause after user interaction
+          var userPausedUntil = 0;
+          var timer = null;
+
+          function centerFrame(index) {
+            var frame = frames[index];
+            if (!frame) return;
+
+            var frameLeft = frame.offsetLeft;
+            var frameWidth = frame.clientWidth;
+            var containerWidth = strip.clientWidth;
+
+            var targetLeft = frameLeft - (containerWidth - frameWidth) / 2;
+            strip.scrollTo({
+              left: targetLeft,
+              behavior: 'smooth'
+            });
+          }
+
+          function nextFrame() {
+            var now = Date.now();
+            if (now < userPausedUntil) return;
+
+            currentIndex = (currentIndex + 1) % frames.length;
+            centerFrame(currentIndex);
+          }
+
+          function startAutoplay() {
+            if (timer) clearInterval(timer);
+            timer = setInterval(nextFrame, autoplayDelay);
+          }
+
+          function pauseForUser() {
+            userPausedUntil = Date.now() + userPauseMs;
+          }
+
+          ['wheel', 'touchstart', 'mousedown', 'pointerdown'].forEach(function (evt) {
+            strip.addEventListener(evt, pauseForUser, { passive: true });
+          });
+
+          // Start centered on first frame
+          centerFrame(currentIndex);
+          startAutoplay();
+        }
+      }
     });
   </script>
 </body>
