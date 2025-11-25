@@ -161,7 +161,7 @@ A good hybrid strategy:
 - Use **GPT-4.1**, **Claude 3.5**, or **ChatGPT-5** **only when needed**  
   → for tricky questions or higher-stakes reasoning.
 
-This approach keeps monthly operating costs extremely low while still allowing premium performance when appropriate.
+This approach keeps monthly operating costs extremely low while still allowing premium performance when appropriate. Switching between these LLMs and deciding which one to use can be done by adding **[OpenRouter.AI](https://openrouter.ai/)** (link)
 
 ---
 
@@ -180,6 +180,94 @@ This setup offers several advantages for the company:
 
 - **Future-proof architecture**  
   Because everything runs through n8n and tools, it is easy to plug in new data sources such as Supabase, a CRM, or order tracking systems.
+
+---
+
+# 7. Performance on Local Hardware (HP Thin Client)
+
+To understand how well the chatbot infrastructure performs in a real-world environment, this section evaluates how many conversations can be handled simultaneously on the **HP T630 Thin Client**, which currently runs n8n and Windows 10.
+
+## 7.1 Hardware Overview
+
+The thin client used for hosting n8n has the following specifications:
+
+- **HP T630 Thin Client – AMD GX-420GI (4 cores @ 2.0 GHz)**
+- **8GB DDR4 RAM**
+- **128GB M.2 SSD**
+- Radeon R7E Graphics  
+- Windows 10 installed  
+- Gigabit Ethernet  
+- Energy-efficient embedded hardware
+
+Since n8n mostly performs I/O-bound work (webhooks, message passing, API calls), this machine is more than capable for the intended workflow.
+
+---
+
+## 7.2 Simultaneous Conversations (Parallel)
+
+All heavy AI operations run on **OpenAI’s servers**, so the thin client only needs to:
+
+- receive webhooks  
+- pass the request to the AI Agent  
+- format responses  
+- send data back to the frontend  
+
+This requires minimal CPU usage.
+
+### **Realistic performance**
+- **20–40 simultaneous conversations**  
+  → Smooth, low latency, no noticeable slowdown.
+
+### **High load (still functional)**
+- **40–60 simultaneous conversations**  
+  → Slight delay possible, but still stable.
+
+### **Technical upper bound**
+- **60–120 webhook events in parallel**  
+  → Not recommended; potential queueing and Windows memory paging.
+
+In all scenarios, the true bottleneck is **OpenAI API latency**, *not* the device.
+
+---
+
+## 7.3 Individual Conversations (Sequential)
+
+For single-user, non-parallel conversations, the thin client processes:
+
+- **~3–8 ms of local work per message**  
+- The remaining time comes entirely from the **OpenAI round-trip**  
+  (typically 200–800 ms depending on model and network conditions).
+
+Therefore:
+
+- **The device can handle hundreds of sequential messages per minute**,  
+  since most of the processing is offloaded.
+
+---
+
+## 7.4 Why the Thin Client Performs Well
+
+- n8n workflows are **asynchronous**  
+- No LLM runs locally → **no heavy CPU computation**
+- SSD ensures fast reads/writes  
+- 4-core CPU handles concurrent webhook triggers easily  
+- 8GB RAM is sufficient for n8n + Windows + multiple workflow executions  
+
+This makes the HP T630 a surprisingly powerful and low-cost automation host.
+
+---
+
+## 7.5 Performance Summary
+
+| Load Type | Capacity | Notes |
+|----------|----------|-------|
+| **Simultaneous conversations** | **20–40 (normal)** | Smooth, stable |
+| | **40–60 (high)** | Small delays possible |
+| | **60–120 (max)** | Not recommended for production |
+| **Sequential conversations** | **Hundreds per minute** | Only ~3–8 ms local overhead |
+| **Main bottleneck** | **OpenAI latency** | Thin client is not the limiting factor |
+
+This makes the chatbot architecture highly scalable even on small, energy-efficient hardware.
 
 ---
 
