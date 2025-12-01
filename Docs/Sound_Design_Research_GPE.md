@@ -2,10 +2,10 @@
 author: Valentijn Jacobs
 title: Sound Design
 date: 2025-03-5
-description: A research and development project made 
-categories: ["Sounds"]
-thumbnail: 
-# carousel:
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Images_GPE/ResearchThumbnail.png" style="width: 100%;" />
+</div>
+
 ---
 
 This paper will conduct research on how sound is used in video games beyond just music and voice acting.
