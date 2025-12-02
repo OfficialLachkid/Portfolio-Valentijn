@@ -1,12 +1,9 @@
----
 author: Valentijn Jacobs
 title: Sound Design
 date: 2025-03-5
 <div style="display: flex; gap: 50px;">
   <img src="Images/Images_GPE/ResearchThumbnail.png" style="width: 100%;" />
 </div>
-
----
 
 This paper will conduct research on how sound is used in video games beyond just music and voice acting.
 Researching how sounds/sound cues affect player behavior and decision making, player feedback, player immersion and identify the best way to implement sounds in games.
