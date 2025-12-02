@@ -288,6 +288,7 @@
         );
       border-radius: 999px;
       opacity: 0.85;
+      pointer-events: none;
     }
 
     .filmstrip::before {
@@ -298,11 +299,11 @@
       bottom: 8px;
     }
 
+    /* ✅ Frames volgen automatisch de breedte van de afbeelding */
     .film-frame {
-      flex: 0 0 230px;
-      height: 300px;
+      flex: 0 0 auto;          /* breedte = eigen content */
       background: #000;
-      border-radius: 6px;
+      border-radius: 8px;
       border: 3px solid #111827;
       padding: 8px;
       scroll-snap-align: center;
@@ -312,10 +313,13 @@
     }
 
     .film-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 2px;
+      display: block;
+      height: auto;
+      width: auto;             /* geen forced 100% breedte */
+      max-height: 320px;       /* genoeg hoogte voor landscape */
+      max-width: 100%;
+      object-fit: contain;     /* volledige afbeelding zichtbaar */
+      border-radius: 4px;
     }
 
     .film-frame:nth-child(odd) {
@@ -392,8 +396,9 @@
         max-width: 320px;
       }
 
+      /* belangrijk: ook op mobiel frames door content laten bepalen */
       .film-frame {
-        flex: 0 0 70%;
+        flex: 0 0 auto;
       }
     }
   </style>
@@ -475,11 +480,24 @@
         </div>
 
         <div class="filmstrip">
-
           <div class="film-frame">
-            <img src="Images/GIFS/Zwerver_npc.gif" alt="NPC GIF" />
+            <img src="Images/Images_GPE/ResearchThumbnail.png" alt="Research Paper Thumbnail" />
           </div>
-
+          <div class="film-frame">
+            <img src="Images/Images_GPE/Japan.png" alt="Environment Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_GPE/MysteriousEgypt.png" alt="Environment Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_GPE/WestTrainstation.png" alt="Environment Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_GPE/AbandonedIsland.png" alt="Environment Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Money_The_Energy_Transition_Game_Cover.png" alt="Environment Image" />
+          </div>
         </div>
       </section>
     </main>
