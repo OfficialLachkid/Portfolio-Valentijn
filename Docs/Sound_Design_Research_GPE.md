@@ -426,24 +426,23 @@ When conducting the test, we stumpled upon a different idea of testing which did
 
 #### Diverse audio present in this scene
 
-``` cs
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/JapaneseScene/harp-japanese-80bpm-85660.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/harp-japanese.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/JapaneseScene/frogs1-26828.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/frog-sound.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/JapaneseScene/chirping-birds-ambience-217410.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/chirping-birds.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/JapaneseScene/bell-towerisolated-35572.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/bell-tower.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-```
+
 
 *Egyptian Environment*
 <div style="display: flex; gap: 50px;">
@@ -452,16 +451,14 @@ When conducting the test, we stumpled upon a different idea of testing which did
 
 #### Diverse audio present in this scene
 
-```cs
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/EgyptScene/EgyptSound.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/EgyptSound.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/EgyptScene/Market sound.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/market-sound.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-```
 
 *Abandoned Island Environment*
 <div style="display: flex; gap: 50px;">
@@ -470,24 +467,22 @@ When conducting the test, we stumpled upon a different idea of testing which did
 
 #### Diverse audio present in this scene
 
-```cs
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/IslandScene/brittany-island-seacost-23077.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/seacoast.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/IslandScene/049228_pirat-battlewav-62056.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/pirate-battle.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/IslandScene/Seagulls.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/seagulls.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/IslandScene/mystical-chime-196405.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/chest-sound.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-```
 
 *Train Station Environment*
 <div style="display: flex; gap: 50px;">
@@ -496,20 +491,18 @@ When conducting the test, we stumpled upon a different idea of testing which did
 
 #### Diverse audio present in this scene
 
-```cs
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/TrainStationScene/SteamTrain.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/steam-train.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/TrainStationScene/horse-neigh-261131.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/horse-neigh.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-<audio controls>
-  <source src="/themes/blist/static/ValentijnJacobs/Audio/TrainStationScene/horse-snort-95874.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+<audio controls style="width: 100%; max-width: 300px;">
+  <source src="Audio/horse-snort.mp3" type="audio/mpeg">
+  Your browser does not support this audio-element.
 </audio>
-```
 
 # Conclusion
 
