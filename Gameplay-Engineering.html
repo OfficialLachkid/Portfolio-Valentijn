@@ -401,6 +401,20 @@
         flex: 0 0 auto;
       }
     }
+
+    /* algemene image container in cards, optioneel */
+    .card-image {
+    overflow: hidden;
+    border-radius: 10px;
+    }
+
+    .card-image--ambient img {
+    width: 100%;
+    max-height: 100px;
+    margin: 0 auto;
+    object-fit: contain;
+    }
+
   </style>
 </head>
 
@@ -424,12 +438,12 @@
         <div class="section-header">
           <h2 class="section-title">Documents</h2>
           <p class="section-subtitle">
-            Research documents split into smaller parts to keep them focused and readable. Includes work on chatbots, voice chatbots and workflows that kept me busy during this semester.
+            Description
           </p>
         </div>
 
         <div class="scroll-row">
-          <!-- Chatbot research -->
+          <!-- Audio research -->
           <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Sound_Design_Research_GPE.md" target="_blank">
             <article class="card">
               <div class="card-header">
@@ -437,10 +451,31 @@
                 <span class="card-tag">Research</span>
               </div>
               <div class="card-body">
-                Research about the effect of audio.
+                Research about the effect of audio. 
+                2D & 3D sound implementation in games and its influence on player immersion and experience. 
+                Paper includes different sound design experiments.
               </div>
             </article>
           </a>
+
+        <!-- Ambient Audio Research game -->
+        <div class="row-card slide-in-left">
+        <article class="card fade-in-up">
+            <div class="card-image card-image--ambient">
+            <a href="https://lachkid-official.itch.io/ambient-audio-research" target="_blank">
+                <img src="Images/Images_GPE/DifferentEnvironments.png" alt="Ambient Audio Experiment" />
+            </a>
+            </div>
+            <div class="card-header">
+            <h3 class="card-title">Ambient Audio Experiment</h3>
+            <span class="card-tag">WebGL</span>
+            </div>
+            <div class="card-body">
+            Small experiment environment to test audio implementation.
+            </div>
+        </article>
+        </div>
+
         </div>
       </section>
 
