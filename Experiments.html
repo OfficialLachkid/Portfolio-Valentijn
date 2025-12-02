@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>GameplayEngineering – Valentijn Jacobs</title>
+  <title>Experiments - Valentijn Jacobs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Personal Development Plan, research and visuals for Gameplay Engineering." />
+  <meta name="description" content="Page containing info on my experiments." />
 
   <style>
     :root {
@@ -301,7 +301,7 @@
 
     /* ✅ Frames volgen automatisch de breedte van de afbeelding */
     .film-frame {
-      flex: 0 0 auto;          /* breedte = eigen content */
+      flex: 0 0 auto;
       background: #000;
       border-radius: 8px;
       border: 3px solid #111827;
@@ -315,10 +315,10 @@
     .film-frame img {
       display: block;
       height: auto;
-      width: auto;             /* geen forced 100% breedte */
-      max-height: 320px;       /* genoeg hoogte voor landscape */
+      width: auto;
+      max-height: 320px;
       max-width: 100%;
-      object-fit: contain;     /* volledige afbeelding zichtbaar */
+      object-fit: contain;
       border-radius: 4px;
     }
 
@@ -392,17 +392,15 @@
       }
 
       .row-card {
-        flex: 0 0 80%;  /* show most of the card and invite horizontal scroll */
+        flex: 0 0 80%;
         max-width: 320px;
       }
 
-      /* belangrijk: ook op mobiel frames door content laten bepalen */
       .film-frame {
         flex: 0 0 auto;
       }
     }
 
-    /* algemene image container in cards, optioneel */
     .card-image {
     overflow: hidden;
     border-radius: 10px;
@@ -423,7 +421,7 @@
     <header class="fade-in-up">
       <div class="brand">
         <div class="brand-avatar">VJ</div>
-        <div>Valentijn Jacobs – Gameplay Engineering</div>
+        <div>Valentijn Jacobs - Experiments</div>
       </div>
       <nav>
         <a href="index.html">Home</a>
@@ -444,38 +442,44 @@
         </div>
 
         <div class="scroll-row">
-          <!-- Audio research -->
-          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Sound_Design_Research_GPE.md" target="_blank">
+          <!-- Chatbot research -->
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Research_Chatbot.md" target="_blank">
             <article class="card">
               <div class="card-header">
-                <h3 class="card-title">Audio Research</h3>
+                <h3 class="card-title">Chatbot</h3>
                 <span class="card-tag">Research</span>
               </div>
               <div class="card-body">
-                Research about the effect of audio. 
-                2D & 3D sound implementation in games and its influence on player immersion and experience. 
-                Paper includes different sound design experiments.
+                Research into building and integrating a chatbot for the project, including requirements and design choices.
               </div>
             </article>
           </a>
 
-        <!-- Ambient Audio Research game -->
-        <div class="row-card slide-in-left">
-        <article class="card fade-in-up">
-            <div class="card-image card-image--ambient">
-            <a href="https://lachkid-official.itch.io/ambient-audio-research" target="_blank">
-                <img src="Images/Images_GPE/DifferentEnvironments.png" alt="Ambient Audio Experiment" />
+          <!-- Voice chatbot research -->
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Research_VoiceChatbot.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Voice Chatbot</h3>
+                <span class="card-tag">Research</span>
+              </div>
+              <div class="card-body">
+                Exploration of voice interaction, technology choices and how it can support the Dark Tech experience.
+              </div>
+            </article>
+          </a>
+
+            <!-- n8n Self-Host Thin Client -->
+            <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/n8n_Self_Host_Thin_Client.md" target="_blank">
+            <article class="card">
+                <div class="card-header">
+                <h3 class="card-title">n8n Self-Hosted</h3>
+                <span class="card-tag">Research</span>
+                </div>
+                <div class="card-body">
+                Research about hosting n8n locally on thin client hardware, using Docker and Cloudflare Tunnel for remote access. Document covers cost, savings and required setup steps.
+                </div>
+            </article>
             </a>
-            </div>
-            <div class="card-header">
-            <h3 class="card-title">Ambient Audio Experience</h3>
-            <span class="card-tag">WebGL</span>
-            </div>
-            <div class="card-body">
-            Small experiment environment to test audio implementation. User experiences different isolated environments with unique audio.
-            </div>
-        </article>
-        </div>
 
         </div>
       </section>
@@ -510,30 +514,37 @@
         <div class="section-header">
           <h2 class="section-title">Images</h2>
           <p class="section-subtitle">
-            Throwback gallery of images from this semester — development moments,
+            Throwback gallery of images from development moments,
             prototypes, testing, brainstorm walls, and other fun snapshots.
           </p>
         </div>
 
         <div class="filmstrip">
+
           <div class="film-frame">
-            <img src="Images/Images_GPE/ResearchThumbnail.png" alt="Research Paper Thumbnail" />
+            <img src="Images/Throwback_ThinClien.jpeg" alt="Thin Client Setup" />
           </div>
+
           <div class="film-frame">
-            <img src="Images/Images_GPE/Japan.png" alt="Environment Image" />
+            <img src="Images/Throwback_100.jpeg" alt="HP Thin Client" />
           </div>
+
           <div class="film-frame">
-            <img src="Images/Images_GPE/MysteriousEgypt.png" alt="Environment Image" />
+            <img src="Images/Throwback_11.jpeg" alt="Setting up" />
           </div>
+
           <div class="film-frame">
-            <img src="Images/Images_GPE/WestTrainstation.png" alt="Environment Image" />
+            <img src="Images/Throwback_97.jpeg" alt="Setting up" />
           </div>
+
           <div class="film-frame">
-            <img src="Images/Images_GPE/AbandonedIsland.png" alt="Environment Image" />
+            <img src="Images/Throwback_98.jpeg" alt="Setting up" />
           </div>
+
           <div class="film-frame">
-            <img src="Images/Money_The_Energy_Transition_Game_Cover.png" alt="Environment Image" />
+            <img src="Images/Throwback_99.jpeg" alt="Setting up" />
           </div>
+
         </div>
       </section>
     </main>
