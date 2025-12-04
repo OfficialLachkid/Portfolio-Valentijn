@@ -1,6 +1,6 @@
-author: Valentijn Jacobs
-title: Sound Design
-date: 2025-03-5
+Author: Valentijn Jacobs
+Title: Sound Design
+Date: 2025-03-5
 <div style="display: flex; gap: 50px;">
   <img src="Images/Images_GPE/ResearchThumbnail.png" style="width: 100%;" />
 </div>
