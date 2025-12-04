@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Internship – Valentijn Jacobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Internship at Antoni van Leeuwenhoek Hospital - Netherlands Cancer Institute." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: #0f172a;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden; /* avoid horizontal scroll on small screens */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Header / Nav (same style as main site) */
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 1.75rem 2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 40rem;
+    }
+
+    /* Horizontal scroll rows */
+
+    .scroll-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin: 0 -0.5rem;
+      padding-left: 0.5rem;
+      scroll-snap-type: x proximity;
+    }
+
+    .scroll-row::-webkit-scrollbar {
+      height: 6px;
+    }
+    .scroll-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .scroll-row::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+    }
+
+    .row-card {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.95rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .link-chip {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .link-chip::before {
+      content: "↗";
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* === FILMSTRIP GALLERY (THROWBACK IMAGES) === */
+
+    .filmstrip {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 2.5rem 2rem;
+      margin: 0 -0.5rem;
+      background: #020617;
+      border-radius: 32px;
+      border: 2px solid #1f2937;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      position: relative;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: auto;
+    }
+
+    .filmstrip::-webkit-scrollbar {
+      height: 6px;
+    }
+    .filmstrip::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+      border-radius: 999px;
+    }
+
+    .filmstrip::before,
+    .filmstrip::after {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 10px;
+      background:
+        repeating-linear-gradient(
+          to right,
+          transparent 0 26px,
+          #000 26px 34px
+        );
+      border-radius: 999px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .filmstrip::before {
+      top: 8px;
+    }
+
+    .filmstrip::after {
+      bottom: 8px;
+    }
+
+    /* ✅ Frames volgen automatisch de breedte van de afbeelding */
+    .film-frame {
+      flex: 0 0 auto;          /* breedte = eigen content */
+      background: #000;
+      border-radius: 8px;
+      border: 3px solid #111827;
+      padding: 8px;
+      scroll-snap-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .film-frame img {
+      display: block;
+      height: auto;
+      width: auto;             /* geen forced 100% breedte */
+      max-height: 320px;       /* genoeg hoogte voor landscape */
+      max-width: 100%;
+      object-fit: contain;     /* volledige afbeelding zichtbaar */
+      border-radius: 4px;
+    }
+
+    .film-frame:nth-child(odd) {
+      transform: rotate(-1.5deg);
+    }
+    .film-frame:nth-child(even) {
+      transform: rotate(1.5deg);
+    }
+
+    /* === ANIMATIONS === */
+
+    .fade-in-up,
+    .slide-in-left {
+      opacity: 0;
+    }
+
+    .fade-in-up {
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        border-radius: 16px;
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .page {
+        padding: 1.25rem 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.9rem;
+      }
+
+      .page {
+        padding: 1.25rem 0.9rem 3rem;
+      }
+
+      section {
+        padding: 1.4rem 1.25rem 1.75rem;
+      }
+
+      .row-card {
+        flex: 0 0 80%;  /* show most of the card and invite horizontal scroll */
+        max-width: 320px;
+      }
+
+      /* belangrijk: ook op mobiel frames door content laten bepalen */
+      .film-frame {
+        flex: 0 0 auto;
+      }
+    }
+
+    /* algemene image container in cards, optioneel */
+    .card-image {
+    overflow: hidden;
+    border-radius: 10px;
+    }
+
+    .card-image--ambient img {
+    width: 100%;
+    max-height: 100px;
+    margin: 0 auto;
+    object-fit: contain;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="fade-in-up">
+      <div class="brand">
+        <div class="brand-avatar">VJ</div>
+        <div>Valentijn Jacobs – Internship (2023)</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#documents">Documents</a>
+        <a href="#codebase">Codebase</a>
+        <a href="#images">Images</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Documents -->
+      <section id="documents" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Documents</h2>
+          <p class="section-subtitle">
+            Description
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <!-- Audio research -->
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/example.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Serious Game Research</h3>
+                <span class="card-tag">Coming soon</span>
+              </div>
+              <div class="card-body">
+                Coming soon...
+              </div>
+            </article>
+          </a>
+
+        <!-- App Concept Adalo-->
+        <div class="row-card slide-in-left">
+        <article class="card fade-in-up">
+            <div class="card-image card-image--ambient">
+            <a href="https://valentijn-jacobss-team.adalo.com/game-app" target="_blank">
+                <img src="Images/Images_Stage/Adalo_Thumbnail.png" alt="Image" />
+            </a>
+            </div>
+            <div class="card-header">
+            <h3 class="card-title">App Concept</h3>
+            <span class="card-tag">Concept</span>
+            </div>
+            <div class="card-body">
+            Concept created to visualize design thoughts to client with an interactive app.
+            </div>
+        </article>
+        </div>
+
+        </div>
+      </section>
+
+      <!-- CODE BASE -->
+      <section id="codebase" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Codebase (Coming soon)</h2>
+          <p class="section-subtitle">
+            Written code used in different projects throughout my internship.
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <!-- Example image tiles – link to full-size images or a gallery -->
+          <a class="row-card slide-in-left" href="Images/document.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Project X Codebase</h3>
+                <span class="card-tag">Repo</span>
+              </div>
+              <div class="card-body">
+                Acces to project's codebase.
+              </div>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <!-- THROWBACK IMAGES AS FILMSTRIP -->
+      <section id="images" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Images</h2>
+          <p class="section-subtitle">
+            Throwback gallery of images from this semester — development moments,
+            prototypes, testing, brainstorm walls, and other fun snapshots.
+          </p>
+        </div>
+
+        <div class="filmstrip">
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Adalo app concept.png" alt="Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Enquête all cells gradually scaling transparency.png" alt="Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Flowchart_Game_NKI-AVL.png" alt="Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Mahjong1.png" alt="Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Mahjong2.png" alt="Image" />
+          </div>
+          <div class="film-frame">
+            <img src="Images/Images_Stage/Database1.png" alt="Image" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> VBJ Services
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      function revealStaggered(selector, baseDelay, step) {
+        var nodes = document.querySelectorAll(selector);
+        nodes.forEach(function (el, index) {
+          var delay = baseDelay + index * step;
+          el.style.transitionDelay = delay + 'ms';
+          requestAnimationFrame(function () {
+            el.classList.add('is-visible');
+          });
+        });
+      }
+
+      setTimeout(function () {
+        revealStaggered('.fade-in-up', 0, 80);
+        revealStaggered('.slide-in-left', 200, 90);
+      }, 50);
+
+      /* === SIMPLE CAROUSEL (SLIDE-BY-SLIDE) FOR FILMSTRIP === */
+
+      var strip = document.querySelector('.filmstrip');
+      if (strip) {
+        var frames = Array.prototype.slice.call(strip.querySelectorAll('.film-frame'));
+        if (frames.length > 1) {
+          var currentIndex = 0;
+          var autoplayDelay = 1500; // ms between slides
+          var userPauseMs = 2000;   // pause after user interaction
+          var userPausedUntil = 0;
+          var timer = null;
+
+          function centerFrame(index) {
+            var frame = frames[index];
+            if (!frame) return;
+
+            var frameLeft = frame.offsetLeft;
+            var frameWidth = frame.clientWidth;
+            var containerWidth = strip.clientWidth;
+
+            var targetLeft = frameLeft - (containerWidth - frameWidth) / 2;
+            strip.scrollTo({
+              left: targetLeft,
+              behavior: 'smooth'
+            });
+          }
+
+          function nextFrame() {
+            var now = Date.now();
+            if (now < userPausedUntil) return;
+
+            currentIndex = (currentIndex + 1) % frames.length;
+            centerFrame(currentIndex);
+          }
+
+          function startAutoplay() {
+            if (timer) clearInterval(timer);
+            timer = setInterval(nextFrame, autoplayDelay);
+          }
+
+          function pauseForUser() {
+            userPausedUntil = Date.now() + userPauseMs;
+          }
+
+          ['wheel', 'touchstart', 'mousedown', 'pointerdown'].forEach(function (evt) {
+            strip.addEventListener(evt, pauseForUser, { passive: true });
+          });
+
+          // Start centered on first frame
+          centerFrame(currentIndex);
+          startAutoplay();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
