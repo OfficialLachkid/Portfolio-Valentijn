@@ -31,10 +31,10 @@ well-documented. The initial research included reading documentation,
 tutorials, and open-source examples. As well as taking a shot at AI on this matter. 
 
 Links: 
-- https://github.com/ultralytics/ultralytics 
-- https://docs.opencv.org 
-- https://huggingface.co 
-- https://github.com/opencv/opencv
+- [https://github.com/ultralytics/ultralytics](https://github.com/ultralytics/ultralytics) 
+- [https://docs.opencv.org](https://docs.opencv.org) 
+- [https://huggingface.co](https://huggingface.co)
+- [https://github.com/opencv/opencv](https://github.com/opencv/opencv)
 
 I determined that running heavy models such as full facial
 recognition or neural gaze estimation would be too expensive (running) for our target setup. Instead, focusing on efficient models

@@ -1,3 +1,9 @@
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Experiments/Website_Scraper.gif" style="width: 40%;" />
+  <img src="Images/Experiments/Scraped_Products_Zakkenspecialist.png" style="width: 50%;" />
+</div>
+
+[.CSV File Link](https://docs.google.com/spreadsheets/d/14K_JwxFZZVmEcMlxrLMKSTLnv4UAjcfedXByzlQtX7Y/edit?usp=sharing)
 
 # Website Scraper
 

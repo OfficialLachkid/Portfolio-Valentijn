@@ -78,11 +78,9 @@ The prototxt file describes the model structure, while the caffemodel
 file contains the trained weights. I placed both files in the project
 directory and referenced them using absolute paths to ensure OpenCV
 could load them consistently. The caffemodel file was retrieved from a
-HuggingFace repository: -
-https://huggingface.co/Durraiya/res10_300x300_ssd_iter_140000_fp16.caffemodel
+[HuggingFace](https://huggingface.co/Durraiya/res10_300x300_ssd_iter_140000_fp16.caffemodel) repository.
 
-The prototxt file was retrieved from the official OpenCV GitHub: -
-https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt
+The prototxt file was retrieved from the official [OpenCV](https://raw.githubusercontent.com/opencv/opencv/master/samples/dnn/face_detector/deploy.prototxt) GitHub.
 
 The combination of these files enabled high‑quality face detection,
 significantly improving the reliability of attention estimation.
@@ -142,7 +140,7 @@ and produces results that are interpretable and actionable.
 
 ## What We Expect to Achieve
 
-\[Writing...\]
+\[*Writing...*\]
 
 ## Notes on Future Improvements
 
@@ -160,4 +158,4 @@ in real‑world deployment scenarios.
 
 ## Written Code
 
-\[Link to code base\]
+\[*Link to code base*\]
