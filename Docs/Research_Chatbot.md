@@ -1,8 +1,15 @@
 # Building a Website Chatbot With n8n, Webhooks and OpenAI Models
 
+[Product Example](https://vbjservices.github.io/Zakkenspecialist-Chatbot/preview.html)
+
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Experiments/Chatbot/Chatbot_v3.gif" style="width: 45%;" />
+  <img src="Images/Experiments/Chatbot/ChatbotAnswer.gif" style="width: 45%;" />
+</div>
+
 ## Overview
 
-This document describes how I built a website chatbot using **n8n** as the orchestration layer and **OpenAI models** (mainly `gpt-4o-mini` and sometimes `gpt-4.1`) as the brain. The chatbot is embedded on a website and connected to n8n through a **webhook**.  
+This document describes how I built a website chatbot using **n8n** as the orchestration layer and **OpenAI models** (mainly `gpt-4o-mini` and sometimes `gpt-4.1`, switching to [OpenRouter](https://openrouter.ai/) soon to handle LLM selection automatically) as the brain. The chatbot is embedded on a website and connected to n8n through a **webhook**.  
 
 Incoming messages from visitors are sent to n8n, where an **AI Agent** node handles the conversation. The agent has access to:
 
@@ -26,17 +33,29 @@ The chatbot consists of three main layers:
 
 ### 1.1 Website chat widget
 
-On the website there is a small chat window in the corner. When a visitor types a message and presses send, the frontend makes an HTTP request to an **n8n webhook URL**. The request contains:
+<div style="display:flex; gap:50px; align-items:flex-start;">
+  <img src="Images/Experiments/Chatbot/ChatImageClosed.png"
+       style="width:30%; height:260px; object-fit:contain;" />
+
+  <img src="Images/Experiments/Chatbot/ChatbotWindowOpen.png"
+       style="width:45%; height:260px; object-fit:contain;" />
+</div>
+
+On the website there is a small chat window in the corner. When a visitor types a message and presses send, the frontend makes an HTTP request to an **n8n webhook URL** sending data to n8n, such as:
 
 - the user’s message,
 - a conversation or session ID,
-- optional metadata (language, page URL, customer type, etc.).
 
-The chat widget waits for a JSON response from n8n and then displays the answer text. If product recommendations are included in the response, the widget renders them as cards with image, title, article number and a link to the product page.
+The chat widget waits for a JSON response from n8n and then displays the answer text. If product recommendations are included in the response, the widget renders them as cards with image, title, article number and a link to the product page.  
+All questions and answers between person and AI are stored in a database, as well as prompt/generation cost.
 
 ### 1.2 n8n workflow
 
 Inside n8n, the flow roughly looks like this:
+
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Experiments/Chatbot/Chatbot_n8n_Workflow_Example.png" style="width: 100%;" />
+</div>
 
 1. **Webhook node – “When chat message received”**  
    This node is triggered every time the website sends a message. It parses the payload and extracts the user text, session ID and other fields.
@@ -124,12 +143,7 @@ For the chatbot’s brain I mainly use **`gpt-4o-mini`** and occasionally **`gpt
 - `gpt-4o-mini` is the **default** model for most messages. It is fast and very cheap, which makes it ideal for continuous chat on a website. According to OpenAI’s pricing, it costs about **$0.15 per 1M input tokens** and **$0.60 per 1M output tokens**. :contentReference[oaicite:0]{index=0}
 - `gpt-4.1` is used selectively for more complex questions where better reasoning and instruction following is important. It is more expensive, at around **$2.00 per 1M input tokens** and **$8.00 per 1M output tokens**. :contentReference[oaicite:1]{index=1}
 
-Because higher-level models are more costly, the workflow is configured so that:
-
-- everyday product and FAQ questions run on `gpt-4o-mini`,  
-- escalations or tricky questions can optionally be routed to `gpt-4.1`.
-
-This balance keeps the chatbot affordable while still allowing high-quality answers when needed.
+Because higher-level models are more costly and not always necessary, [OpenRouter](https://openrouter.ai/) will be setup in the near future to automatically handle different questions.
 
 ---
 

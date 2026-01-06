@@ -161,11 +161,30 @@
       align-items: center;
     }
 
+    /* NEW: photo + name row (like your screenshot) */
+    .hero-name {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* NEW: round profile photo */
+    .profile-photo {
+      width: clamp(110px, 14vw, 160px);
+      height: clamp(110px, 14vw, 160px);
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(56, 189, 248, 0.75);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
     .hero-main h1 {
       font-size: clamp(2.3rem, 4vw, 2.8rem);
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0; /* changed: spacing handled by .hero-name */
     }
 
     .hero-tagline {
@@ -508,12 +527,12 @@
       nav {
         width: 100%;
         justify-content: flex-start;
-        flex-wrap: wrap;              /* allow nav to wrap on very small screens */
-        gap: 0.5rem 0.9rem;           /* tighter gaps so it doesn’t feel cramped */
+        flex-wrap: wrap;
+        gap: 0.5rem 0.9rem;
       }
 
       .page {
-        padding: 1.25rem 0.9rem 3rem; /* slightly less side padding on tiny screens */
+        padding: 1.25rem 0.9rem 3rem;
       }
 
       section {
@@ -522,6 +541,11 @@
 
       .hero-side {
         margin-top: 1.25rem;
+      }
+
+      /* Optional: let name wrap nicely next to photo on tiny screens */
+      .hero-name {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -547,7 +571,13 @@
       <!-- HERO -->
       <section class="hero fade-in-up" id="about">
         <div class="hero-main">
-          <h1>Valentijn Jacobs</h1>
+
+          <!-- NEW: photo + name row -->
+          <div class="hero-name">
+            <img src="Images/Profile.png" alt="Photo of Valentijn Jacobs" class="profile-photo" />
+            <h1>Valentijn Jacobs</h1>
+          </div>
+
           <p class="hero-tagline">
             Bachelor of ICT student and developer documenting experiments, prototypes,
             games, and other findings. From web projects to WebGL games in Unity.
@@ -639,7 +669,7 @@
             </article>
           </a>
 
-          <!-- Gameplay Engineering -->
+          <!-- Internship -->
           <a href="Internship.html" style="text-decoration:none; color:inherit;">
             <article class="card fade-in-up">
               <div class="card-header">
@@ -655,7 +685,7 @@
             </article>
           </a>
 
-          <!-- Gameplay Engineering -->
+          <!-- Experiments -->
           <a href="Experiments.html" style="text-decoration:none; color:inherit;">
             <article class="card fade-in-up">
               <div class="card-header">
@@ -673,49 +703,6 @@
 
         </div>
       </section>
-
-      <!-- DOCUMENTS / FINDINGS
-      <section id="documents" class="fade-in-up">
-        <div class="section-header">
-          <h2 class="section-title">Documents & Findings</h2>
-          <p class="section-subtitle">
-            Reports, write-ups, and other artifacts I want to highlight.
-          </p>
-        </div>
-
-        <div class="grid grid-2">
-          <article class="card fade-in-up">
-            <div class="card-header">
-              <h3 class="card-title">Finding / Report #1</h3>
-              <span class="card-tag">PDF</span>
-            </div>
-            <div class="card-body">
-              One or two lines explaining what this document covers and why it’s useful.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="Docs/report1.pdf" target="_blank">
-                <span>Open PDF</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="card fade-in-up">
-            <div class="card-header">
-              <h3 class="card-title">Finding / Note #2</h3>
-              <span class="card-tag">Note</span>
-            </div>
-            <div class="card-body">
-              Summary of an experiment, user test, or any other learning I want
-              to document.
-            </div>
-            <div class="card-footer">
-              <a class="link-chip" href="Docs/note2.md" target="_blank">
-                <span>View notes (raw)</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </section> -->
 
       <!-- GAMES -->
       <section id="games" class="fade-in-up">
@@ -814,13 +801,6 @@
 
       <!-- CONTACT -->
       <section id="contact" class="fade-in-up">
-        <!-- <div class="section-header">
-          <h2 class="section-title">Contact</h2>
-          <p class="section-subtitle">
-            Ways to reach me or explore my work further.
-          </p>
-        </div> -->
-
         <div class="contact-grid">
           <div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
