@@ -51,6 +51,26 @@ A growing business needs scalable logistics. Manual planning limits efficiency, 
 
 Instead of magnets on a board or routes drawn by hand, planning now lives inside a structured, intelligent and fully controllable system. It is built so the company can move forward, handle more orders and give employees the tools they need to work clearly and confidently.
 
+## Early Designs
+
+---
+
+<div style="display: flex; gap: 50px;">
+  <img src="Images/Experiments/Truck_Planner/Design/Design1.png" style="width: 50%;" />
+</div>
+
+---
+
+<div style="display:flex; gap:50px; align-items:flex-start;">
+  <img src="Images/Experiments/Truck_Planner/Design/Design2.png"
+       style="width:45%; height:400px; object-fit:contain;" />
+
+  <img src="Images/Experiments/Truck_Planner/Design/Design3.png"
+       style="width:45%; height:400px; object-fit:contain;" />
+</div>
+
+---
+
 ## Roadmap
 
 - Fetch incoming orders from company's database
