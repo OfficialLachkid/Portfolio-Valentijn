@@ -138,10 +138,6 @@ meaningful attention‑tracking system:
 This layered approach avoids overreliance on any single detection method
 and produces results that are interpretable and actionable.
 
-## What We Expect to Achieve
-
-\[*Writing...*\]
-
 ## Notes on Future Improvements
 
 Future refinements could include: 
