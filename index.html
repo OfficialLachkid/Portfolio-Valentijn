@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -439,7 +439,108 @@
       opacity: 0.6;
     }
 
-    /* Contact */
+    
+    /* Clickable card hover */
+    .card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      outline: none;
+      border-radius: var(--radius-lg);
+    }
+
+    a.row-card,
+    .card-link {
+      outline: none;
+    }
+
+    .card-image a {
+      display: block;
+    }
+
+    .card,
+    .card-image img,
+    .link-chip,
+    .card-tag {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease,
+        background 0.22s ease, color 0.22s ease, filter 0.22s ease;
+    }
+
+    a.row-card:hover .card,
+    a.row-card:focus-visible .card,
+    .card-link:hover .card,
+    .card-link:focus-visible .card {
+      transform: scale(1.015);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 24px 44px rgba(2, 6, 23, 0.82);
+      background: linear-gradient(165deg, rgba(21, 32, 50, 0.98), rgba(13, 22, 37, 0.98));
+    }
+
+    a.row-card:hover .card-image img,
+    a.row-card:focus-visible .card-image img,
+    .card-link:hover .card-image img,
+    .card-link:focus-visible .card-image img {
+      transform: scale(1.05);
+      filter: saturate(1.06) brightness(1.03);
+    }
+
+    a.row-card:hover .card-tag,
+    a.row-card:focus-visible .card-tag,
+    .card-link:hover .card-tag,
+    .card-link:focus-visible .card-tag {
+      color: var(--text-main);
+      border-color: rgba(56, 189, 248, 0.46);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    a.row-card:hover .link-chip,
+    a.row-card:focus-visible .link-chip,
+    .card-link:hover .link-chip,
+    .card-link:focus-visible .link-chip {
+      transform: translateX(4px);
+      color: var(--text-main);
+      border-color: rgba(56, 189, 248, 0.42);
+    }
+
+    a.row-card:focus-visible .card,
+    .card-link:focus-visible .card {
+      outline: 2px solid rgba(56, 189, 248, 0.55);
+      outline-offset: 3px;
+    }
+
+    .card:has(.card-image a:hover),
+    .card:has(.card-image a:focus-visible) {
+      transform: scale(1.015);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 24px 44px rgba(2, 6, 23, 0.82);
+      background: linear-gradient(165deg, rgba(21, 32, 50, 0.98), rgba(13, 22, 37, 0.98));
+    }
+
+    .card:has(.card-image a:hover) .card-image img,
+    .card:has(.card-image a:focus-visible) .card-image img {
+      transform: scale(1.05);
+      filter: saturate(1.06) brightness(1.03);
+    }
+
+    .card:has(.card-image a:hover) .card-tag,
+    .card:has(.card-image a:focus-visible) .card-tag {
+      color: var(--text-main);
+      border-color: rgba(56, 189, 248, 0.46);
+      background: rgba(56, 189, 248, 0.12);
+    }
+
+    .card:has(.card-image a:hover) .link-chip,
+    .card:has(.card-image a:focus-visible) .link-chip {
+      transform: translateX(4px);
+      color: var(--text-main);
+      border-color: rgba(56, 189, 248, 0.42);
+    }
+
+    .card:has(.card-image a:focus-visible) {
+      outline: 2px solid rgba(56, 189, 248, 0.55);
+      outline-offset: 3px;
+    }
+/* Contact */
 
     .contact-grid {
       display: grid;
@@ -646,7 +747,7 @@
 
         <div class="grid grid-3">
           <!-- Domits Internship -->
-          <a href="Domits-Internship.html" style="text-decoration:none; color:inherit;">
+          <a href="Domits-Internship.html" class="card-link">
             <article class="card fade-in-up">
               <div class="card-image">
                 <img src="Images/Domits_Internship/Images/Platform_Showcase/image.png" alt="Domits internship showcase" />
@@ -665,7 +766,7 @@
           </a>
 
           <!-- Studio Dark Tech Card-->
-          <a href="Studio-Dark-Tech.html" style="text-decoration:none; color:inherit;">
+          <a href="Studio-Dark-Tech.html" class="card-link">
             <article class="card fade-in-up">
               <div class="card-image">
                 <img src="Images/Images_DarkTech/Digital_Intervention_Images/Perron showcase 1.png" alt="Studio Dark Tech showcase" />
@@ -684,7 +785,7 @@
           </a>
 
           <!-- Gameplay Engineering -->
-          <a href="Gameplay-Engineering.html" style="text-decoration:none; color:inherit;">
+          <a href="Gameplay-Engineering.html" class="card-link">
             <article class="card fade-in-up">
               <div class="card-image">
                 <img src="Images/Header_Cards_Thumbnails/GPE_thumbnail.jpg" alt="Gameplay Engineering thumbnail" />
@@ -704,7 +805,7 @@
           </a>
 
           <!-- Internship -->
-          <a href="Internship.html" style="text-decoration:none; color:inherit;">
+          <a href="Internship.html" class="card-link">
             <article class="card fade-in-up">
               <div class="card-image">
                 <img src="Images/Header_Cards_Thumbnails/NKI_AVL_thumbnail.png" alt="NKI internship thumbnail" />
@@ -723,7 +824,7 @@
           </a>
 
           <!-- Experiments -->
-          <a href="Experiments.html" style="text-decoration:none; color:inherit;">
+          <a href="Experiments.html" class="card-link">
             <article class="card fade-in-up">
               <div class="card-image">
                 <img src="Images/Header_Cards_Thumbnails/Experiments_thumbnail.png" alt="Experiments thumbnail" />
