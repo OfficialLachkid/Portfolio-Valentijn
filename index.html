@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Valentijn Jacobs – Portfolio</title>
+  <title>Valentijn Jacobs &ndash; Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Valentijn Jacobs – projects, documents, and games." />
+  <meta name="description" content="Portfolio of Valentijn Jacobs &ndash; projects, documents, and games." />
 
   <style>
     :root {
@@ -323,7 +323,7 @@
     }
 
     .hero-side-list li::before {
-      content: "→";
+      content: "\2192";
       opacity: 0.6;
       margin-right: 0.5rem;
     }
@@ -376,9 +376,10 @@
       transition: transform 0.18s ease, opacity 0.18s ease;
     }
 
-    .card:hover .card-image img {
-      transform: scale(1.03);
-      opacity: 0.96;
+    
+
+    .retro-run-thumb {
+      object-position: center top;
     }
 
     .card-header {
@@ -433,7 +434,7 @@
     }
 
     .link-chip::before {
-      content: "↗";
+      content: "\2197";
       font-size: 0.65rem;
       opacity: 0.6;
     }
@@ -593,14 +594,14 @@
 
           <!-- <div class="hero-meta">
             <div class="pill pill-accent">Portfolio</div>
-            <div class="pill">Games – Itch.io</div>
+            <div class="pill">Games &ndash; Itch.io</div>
           </div> -->
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="Docs/CV.pdf" target="_blank">
               Download CV (PDF)
             </a>
-            <a class="btn" href="#portfolio">View portfolio ↓</a>
+            <a class="btn" href="#portfolio">View portfolio &darr;</a>
           </div>
 
           <div class="hero-highlight-list">
@@ -623,7 +624,7 @@
           <h2>About this space</h2>
           <p>
             This portfolio collects projects, documents, and games I created during
-            my Bachelor of ICT and beyond. It’s a living archive of things I build,
+            my Bachelor of ICT and beyond. It's a living archive of things I build,
             test, and learn from.
           </p>
           <ul class="hero-side-list">
@@ -644,6 +645,25 @@
         </div>
 
         <div class="grid grid-3">
+          <!-- Domits Internship -->
+          <a href="Domits-Internship.html" style="text-decoration:none; color:inherit;">
+            <article class="card fade-in-up">
+              <div class="card-image">
+                <img src="Images/Domits_Internship/Images/Platform_Showcase/image.png" alt="Domits internship showcase" />
+              </div>
+              <div class="card-header">
+                <h3 class="card-title">Internship at Domits</h3>
+                <span class="card-tag">Internship</span>
+              </div>
+              <div class="card-body">
+                Overview of my internship work at hospitality platform Domits, including what I built, how I approached it, and what the end product became.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
           <!-- Studio Dark Tech Card-->
           <a href="Studio-Dark-Tech.html" style="text-decoration:none; color:inherit;">
             <article class="card fade-in-up">
@@ -718,12 +738,11 @@
           <h2 class="section-title">Games</h2>
           <p class="section-subtitle">
             Small browser games I made as a Bachelor of ICT student.
-            They run in the browser via itch.io (WebGL).
+            They run in the browser via itch.io, GitHub Pages, or other web builds.
           </p>
         </div>
 
-        <div class="grid grid-3">
-          <!-- Money: The Energy Transition -->
+        <div class="grid grid-3"><!-- Money: The Energy Transition -->
           <article class="card fade-in-up">
             <div class="card-image">
               <a href="https://lachkid-official.itch.io/money-the-energy-transition" target="_blank">
@@ -801,7 +820,23 @@
             </div>
             <div class="card-body">
               You've fallen into a mysterious well surrounded by zombie plants. Build a ladder from enemy materials to escape!
-              Game Jam – Theme: Roots.
+              Game Jam &ndash; Theme: Roots.
+            </div>
+          </article>
+
+          <!-- Retro Run -->
+          <article class="card fade-in-up">
+            <div class="card-image">
+              <a href="https://officiallachkid.github.io/retro-run/game/" target="_blank">
+                <img class="retro-run-thumb" src="Images/Retro_Run_Game_Cover.png" alt="Retro Run cover" />
+              </a>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">Retro Run</h3>
+              <span class="card-tag">p5.js</span>
+            </div>
+            <div class="card-body">
+              A retro-styled endless runner with a playable browser build and a full project hub documenting how it was made.
             </div>
           </article>
         </div>
@@ -812,7 +847,7 @@
         <div class="contact-grid">
           <div>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem;">
-              Feel free to reach out for collaboration, feedback, or if you’re
+              Feel free to reach out for collaboration, feedback, or if you're
               curious about any of the findings in this portfolio.
             </p>
 
@@ -838,7 +873,7 @@
 
           <div class="card fade-in-up">
             <div class="card-header">
-              <h3 class="card-title">What you’ll find here</h3>
+              <h3 class="card-title">What you'll find here</h3>
             </div>
             <div class="card-body">
               <ul style="list-style: disc; padding-left: 1rem; font-size: 0.85rem;">
@@ -853,7 +888,7 @@
     </main>
 
     <footer>
-      © <span id="year"></span> VBJ Services
+      &copy; <span id="year"></span> VBJ Services
     </footer>
   </div>
 
@@ -886,3 +921,4 @@
   </script>
 </body>
 </html>
+

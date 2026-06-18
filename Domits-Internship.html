@@ -1,0 +1,856 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Domits Internship - Valentijn Jacobs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Internship overview for my work at Domits." />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #111827;
+      --accent: #38bdf8;
+      --accent-soft: #0f172a;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: #1f2937;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section {
+      scroll-margin-top: 110px;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Inter", sans-serif;
+      background: radial-gradient(circle at top left, #1e293b, #020617 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #0ea5e9 40%, #1d4ed8);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      padding: 0.25rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    main {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #020617, #020617 55%, #000);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 1.75rem 2rem;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    
+    .overview-header {
+      align-items: flex-start;
+    }
+
+    .overview-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      flex: 0 0 280px;
+    }
+
+    .overview-logo {
+      width: min(140px, 100%);
+      height: auto;
+    }
+
+    .overview-copy {
+      max-width: 40rem;
+    }
+
+    .scroll-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin: 0 -0.5rem;
+      padding-left: 0.5rem;
+      scroll-snap-type: x proximity;
+    }
+
+    .scroll-row::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .scroll-row::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .scroll-row::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 999px;
+    }
+
+    .row-card {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      text-decoration: none;
+      color: inherit;
+    }
+
+
+    /* === DOMITS FILMSTRIP === */
+    .filmstrip {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 2.5rem 2rem;
+      margin: 0 -0.5rem;
+      background: #020617;
+      border-radius: 32px;
+      border: 2px solid #1f2937;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+      position: relative;
+      scroll-behavior: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148, 163, 184, 0.4) transparent;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .filmstrip.is-dragging {
+      cursor: grabbing;
+    }
+
+    .filmstrip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .filmstrip::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+      border-radius: 999px;
+    }
+
+    .filmstrip::before,
+    .filmstrip::after {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      right: 1.5rem;
+      height: 10px;
+      background:
+        repeating-linear-gradient(
+          to right,
+          transparent 0 26px,
+          #000 26px 34px
+        );
+      border-radius: 999px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .filmstrip::before {
+      top: 8px;
+    }
+
+    .filmstrip::after {
+      bottom: 8px;
+    }
+
+    .film-frame {
+      flex: 0 0 auto;
+      background: #000;
+      border-radius: 8px;
+      border: 3px solid #111827;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.32);
+    }
+
+    .film-frame img {
+      display: block;
+      height: auto;
+      width: auto;
+      max-height: 320px;
+      max-width: min(76vw, 560px);
+      object-fit: contain;
+      border-radius: 4px;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .film-frame--tilt-left {
+      transform: rotate(-1.5deg);
+    }
+
+    .film-frame--tilt-right {
+      transform: rotate(1.5deg);
+    }    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem 0.95rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      height: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+    }
+
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card-footer {
+      margin-top: 0.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+    }
+
+    .link-chip {
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-muted);
+    }
+
+    .link-chip::before {
+      content: "->";
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+    .preview-panel {
+      padding: 0.85rem;
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.98));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    .preview-video {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 18px;
+      background: #000;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .fade-in-up,
+    .slide-in-left {
+      opacity: 0;
+    }
+
+    .fade-in-up {
+      transform: translateY(18px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .slide-in-left {
+      transform: translateX(-24px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      header {
+        border-radius: 16px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .overview-side {
+        width: 100%;
+        flex: none;
+      }
+
+      .page {
+        padding: 1.25rem 1rem 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem 0.9rem;
+      }
+
+      .page {
+        padding: 1.25rem 0.9rem 3rem;
+      }
+
+      section {
+        padding: 1.4rem 1.25rem 1.75rem;
+      }
+
+      .row-card {
+        flex: 0 0 80%;
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="fade-in-up">
+      <div class="brand">
+        <div class="brand-avatar">VJ</div>
+        <div>Valentijn Jacobs - Internship at Domits</div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#preview">Preview</a>
+        <a href="#documents">Documents</a>
+        <a href="#images">Images</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="overview" class="fade-in-up">
+        <div class="section-header overview-header">
+          <div class="overview-side">
+            <h2 class="section-title">Overview</h2>
+            <img
+              class="overview-logo"
+              src="Images/Domits_Internship/Domits_Logo.png"
+              alt="Domits logo"
+            />
+          </div>
+          <p class="section-subtitle overview-copy">
+            During my internship at <a href="https://www.domits.com/" target="_blank" rel="noreferrer">Domits</a>, I worked on a hospitality platform focused on bookings, host tooling,
+            integrations and direct booking flows. Besides building features myself as a fullstack developer, I operated in a lead developer role:
+            reviewing pull requests, guiding engineers, leading morning and afternoon standups and standdowns, monitoring
+            progress, unblocking issues, coordinating quality assurance, and helping manage merges from the development branch into
+            main for production releases.
+            <br /><br />
+            I also stayed in close contact with the CEO about delivery progress, priorities, and release readiness. This page
+            collects the materials that explain both what I built and how I contributed to the engineering process around it.
+          </p>
+        </div>
+      </section><section id="preview" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Preview</h2>
+          <p class="section-subtitle">
+            Panorama showcase video of the Direct Booking Website experience.
+          </p>
+        </div>
+
+        <div class="preview-panel">
+          <video
+            class="preview-video"
+            src="Images/Domits_Internship/Images/gifs_and_videos/website_showcase_Panorama.mp4"
+            autoplay
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+      </section>
+
+
+
+      <section id="documents" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Documents</h2>
+          <p class="section-subtitle">
+            Write-ups, feature breakdowns and supporting documents from the internship period.
+          </p>
+        </div>
+
+        <div class="scroll-row">
+          <a class="row-card slide-in-left" href="Images/Domits_Internship/Onderzoek_Valentijn_Jacobs.pdf" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Direct Booking Website Thesis</h3>
+                <span class="card-tag">PDF</span>
+              </div>
+              <div class="card-body">
+                Thesis and research document focused on the Direct Booking Website work, covering the concept, process and resulting product direction.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open document</span></span>
+              </div>
+            </article>
+          </a>
+
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Direct_Booking_Website_Feature.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Direct Booking Website Feature</h3>
+                <span class="card-tag">Markdown</span>
+              </div>
+              <div class="card-body">
+                Professional feature breakdown explaining why the Direct Booking Website exists, how it was built, and what the delivered foundation consists of.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+          <a class="row-card slide-in-left" href="document-viewer.html?file=Docs/Lead_Developer_Role_At_Domits.md" target="_blank">
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Lead Developer Role at Domits</h3>
+                <span class="card-tag">Markdown</span>
+              </div>
+              <div class="card-body">
+                Overview of my role, responsibilities, engineering leadership, review ownership, release flow, and quality assurance during the internship.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+        </div>
+      </section>
+
+      <section id="images" class="fade-in-up">
+        <div class="section-header">
+          <h2 class="section-title">Images</h2>
+          <p class="section-subtitle">
+            Screens from the Direct Booking Website work. The gallery scrolls smoothly on its own and pauses as soon as you hover,
+            drag, scroll or focus it yourself.
+          </p>
+        </div>
+
+        <div
+          class="filmstrip"
+          id="domits-filmstrip"
+          tabindex="0"
+          aria-label="Direct Booking Website screenshots"
+        ></div>
+      </section>
+    </main>
+
+    <footer>
+      &copy; <span id="year"></span> VBJ Services
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var yearEl = document.getElementById('year');
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      function revealStaggered(selector, baseDelay, step) {
+        var nodes = document.querySelectorAll(selector);
+        nodes.forEach(function (el, index) {
+          var delay = baseDelay + index * step;
+          el.style.transitionDelay = delay + 'ms';
+          requestAnimationFrame(function () {
+            el.classList.add('is-visible');
+          });
+        });
+      }
+
+      setTimeout(function () {
+        revealStaggered('.fade-in-up', 0, 80);
+        revealStaggered('.slide-in-left', 200, 90);
+      }, 50);
+
+      /* === DOMITS FILMSTRIP === */
+      var domitsStrip = document.getElementById('domits-filmstrip');
+      if (domitsStrip) {
+        var domitsImagePaths = ["Images/Domits_Internship/Images/Direct_Booking_Website/Builder.png","Images/Domits_Internship/Images/Direct_Booking_Website/Building_site.png","Images/Domits_Internship/Images/Direct_Booking_Website/Editor.png","Images/Domits_Internship/Images/Direct_Booking_Website/Editor1.png","Images/Domits_Internship/Images/Direct_Booking_Website/Editor2.png","Images/Domits_Internship/Images/Direct_Booking_Website/live_site.png","Images/Domits_Internship/Images/Direct_Booking_Website/Obsidian.png","Images/Domits_Internship/Images/Direct_Booking_Website/Obsidian1.png","Images/Domits_Internship/Images/Direct_Booking_Website/Obsidian2.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101523.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101536.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101731.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101745.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101824.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 101834.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-03-24 103452.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-10 104039.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-10 105121.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-10 105216.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-14 133808.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-14 134129.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 114424.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 114440.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 120537.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 120732.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 133720.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 173838.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-15 173905.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-20 113223.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-20 113556.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-29 140145.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-04-29 140202.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-05-12 112231.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-05-13 130715.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-05-13 131758.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-05-14 170716.png","Images/Domits_Internship/Images/Direct_Booking_Website/Screenshot 2026-06-02 143326.png"];
+        buildDomitsFilmstrip(domitsStrip, domitsImagePaths);
+        initContinuousFilmstrip(domitsStrip);
+      }
+
+      function buildDomitsFilmstrip(strip, imagePaths) {
+        var fragment = document.createDocumentFragment();
+
+        imagePaths.forEach(function (src, index) {
+          var frame = document.createElement('div');
+          frame.className = 'film-frame ' + (index % 2 === 0 ? 'film-frame--tilt-left' : 'film-frame--tilt-right');
+          frame.setAttribute('role', 'group');
+          frame.setAttribute('aria-label', 'Direct Booking Website screenshot ' + (index + 1));
+
+          var img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Direct Booking Website screenshot ' + (index + 1);
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.draggable = false;
+
+          frame.appendChild(img);
+          fragment.appendChild(frame);
+        });
+
+        strip.appendChild(fragment);
+      }
+
+      function initContinuousFilmstrip(strip) {
+        var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var frames = Array.prototype.slice.call(strip.querySelectorAll('.film-frame'));
+        if (reducedMotion || frames.length < 2) {
+          return;
+        }
+
+        var styles = window.getComputedStyle(strip);
+        var frameGap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        var lastTimestamp = 0;
+        var pauseUntil = 0;
+        var isHovered = false;
+        var isDragging = false;
+        var activePointerId = null;
+        var lastPointerX = 0;
+        var dragDistance = 0;
+        var scrollSpeed = 34;
+        var isNormalizing = false;
+
+        function refreshMetrics() {
+          styles = window.getComputedStyle(strip);
+          frameGap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        }
+
+        function getFrameSpan(frame) {
+          if (!frame) {
+            return 0;
+          }
+
+          return frame.getBoundingClientRect().width + frameGap;
+        }
+
+        function normalizeForLoop() {
+          if (isNormalizing) {
+            return;
+          }
+
+          isNormalizing = true;
+
+          var maxMoves = strip.children.length || 1;
+          var guard = 0;
+
+          while (strip.scrollLeft <= 0.5 && guard < maxMoves) {
+            var lastFrame = strip.lastElementChild;
+            if (!lastFrame) {
+              break;
+            }
+
+            var lastSpan = getFrameSpan(lastFrame);
+            strip.insertBefore(lastFrame, strip.firstElementChild);
+            strip.scrollLeft += lastSpan;
+            guard += 1;
+          }
+
+          guard = 0;
+          while (guard < maxMoves) {
+            var firstFrame = strip.firstElementChild;
+            var firstSpan = getFrameSpan(firstFrame);
+            if (!firstFrame || strip.scrollLeft < firstSpan) {
+              break;
+            }
+
+            strip.appendChild(firstFrame);
+            strip.scrollLeft -= firstSpan;
+            guard += 1;
+          }
+
+          isNormalizing = false;
+        }
+
+        function pauseFor(ms) {
+          pauseUntil = Math.max(pauseUntil, Date.now() + ms);
+        }
+
+        function shouldPause() {
+          return isHovered || isDragging || Date.now() < pauseUntil;
+        }
+
+        function step(timestamp) {
+          if (!lastTimestamp) {
+            lastTimestamp = timestamp;
+          }
+
+          var delta = timestamp - lastTimestamp;
+          lastTimestamp = timestamp;
+
+          if (!shouldPause()) {
+            strip.scrollLeft += (scrollSpeed * delta) / 1000;
+            normalizeForLoop();
+          }
+
+          window.requestAnimationFrame(step);
+        }
+
+        function handlePointerDown(event) {
+          if (event.pointerType === 'mouse' && event.button !== 0) {
+            return;
+          }
+
+          isDragging = true;
+          activePointerId = event.pointerId;
+          lastPointerX = event.clientX;
+          dragDistance = 0;
+          strip.classList.add('is-dragging');
+          pauseFor(4000);
+
+          if (strip.setPointerCapture) {
+            strip.setPointerCapture(event.pointerId);
+          }
+        }
+
+        function handlePointerMove(event) {
+          if (!isDragging || event.pointerId !== activePointerId) {
+            return;
+          }
+
+          var deltaX = event.clientX - lastPointerX;
+          dragDistance = Math.max(dragDistance, Math.abs(deltaX));
+          strip.scrollLeft -= deltaX;
+          lastPointerX = event.clientX;
+          normalizeForLoop();
+          event.preventDefault();
+        }
+
+        function stopDragging() {
+          if (!isDragging) {
+            return;
+          }
+
+          if (
+            strip.releasePointerCapture &&
+            activePointerId !== null &&
+            strip.hasPointerCapture &&
+            strip.hasPointerCapture(activePointerId)
+          ) {
+            strip.releasePointerCapture(activePointerId);
+          }
+
+          isDragging = false;
+          activePointerId = null;
+          strip.classList.remove('is-dragging');
+          pauseFor(dragDistance > 6 ? 2600 : 1800);
+          normalizeForLoop();
+        }
+
+        strip.addEventListener('pointerenter', function () {
+          isHovered = true;
+        });
+
+        strip.addEventListener('pointerleave', function () {
+          isHovered = false;
+          pauseFor(900);
+          stopDragging();
+        });
+
+        strip.addEventListener('pointerdown', handlePointerDown);
+        strip.addEventListener('pointermove', handlePointerMove);
+        strip.addEventListener('pointerup', stopDragging);
+        strip.addEventListener('pointercancel', stopDragging);
+        strip.addEventListener('dragstart', function (event) {
+          event.preventDefault();
+        });
+        strip.addEventListener('wheel', function () {
+          pauseFor(2600);
+          normalizeForLoop();
+        }, { passive: true });
+        strip.addEventListener('touchstart', function () {
+          pauseFor(3200);
+        }, { passive: true });
+        strip.addEventListener('focusin', function () {
+          pauseFor(3200);
+        });
+        strip.addEventListener('scroll', function () {
+          if (shouldPause()) {
+            normalizeForLoop();
+          }
+        }, { passive: true });
+
+        Array.prototype.forEach.call(strip.querySelectorAll('img'), function (img) {
+          img.addEventListener('load', function () {
+            refreshMetrics();
+            normalizeForLoop();
+          }, { passive: true });
+          img.addEventListener('error', function () {
+            refreshMetrics();
+            normalizeForLoop();
+          }, { passive: true });
+        });
+
+        window.addEventListener('resize', function () {
+          refreshMetrics();
+          normalizeForLoop();
+        });
+
+        refreshMetrics();
+        normalizeForLoop();
+        window.setTimeout(function () {
+          refreshMetrics();
+          normalizeForLoop();
+        }, 250);
+        window.requestAnimationFrame(step);
+      }
+      /* === END DOMITS FILMSTRIP === */
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

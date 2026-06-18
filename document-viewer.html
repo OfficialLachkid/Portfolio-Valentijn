@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Document – Valentijn Jacobs</title>
+  <title>Document - Valentijn Jacobs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Markdown document viewer for the portfolio of Valentijn Jacobs." />
 
@@ -273,13 +273,13 @@
       <div class="doc-wrapper fade-in-up">
         <div class="error-msg" id="doc-error" style="display:none;"></div>
         <div id="markdown-content">
-          Loading document…
+          Loading document...
         </div>
       </div>
     </main>
 
     <footer>
-      © <span id="year"></span> VBJ Services
+      &copy; <span id="year"></span> VBJ Services
     </footer>
   </div>
 
@@ -308,7 +308,7 @@
       } else {
         var parts = fileParam.split('/');
         var filename = parts[parts.length - 1];
-        document.title = filename.replace(/_/g, ' ') + ' – Valentijn Jacobs';
+        document.title = filename.replace(/_/g, ' ') + ' - Valentijn Jacobs';
 
         fetch(fileParam)
           .then(function (res) {
@@ -321,7 +321,8 @@
             var converter = new showdown.Converter({
               simpleLineBreaks: true,
               tables: true,
-              strikethrough: true
+              strikethrough: true,
+              openLinksInNewWindow: true
             });
             var html = converter.makeHtml(text);
             contentEl.innerHTML = html;
@@ -352,3 +353,4 @@
   </script>
 </body>
 </html>
+
