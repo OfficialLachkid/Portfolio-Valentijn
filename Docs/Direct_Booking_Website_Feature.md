@@ -212,4 +212,3 @@ For me, this feature was valuable because it combined several types of work in o
 
 That combination is also what makes the Direct Booking Website one of the strongest examples of my internship work at Domits.
 
-
