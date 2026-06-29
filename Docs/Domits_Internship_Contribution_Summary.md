@@ -1,13 +1,5 @@
 # Internship Contribution Summary at Domits
 
-<div style="text-align: center; margin: 0.2rem 0 1rem;">
-  <img
-    src="Images/Domits_Internship/Domits_Logo.png"
-    alt="Domits logo"
-    style="display: inline-block; width: 120px; max-width: 100%; height: auto;"
-  />
-</div>
-
 <div style="text-align: center; margin: 0.25rem 0 1.75rem;">
   <img
     src="Images/Domits_Internship/Images/Platform_Showcase/image.png"

@@ -143,19 +143,23 @@
 
     
     .overview-header {
-      align-items: flex-start;
+      align-items: stretch;
     }
 
     .overview-side {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: auto 1fr;
       gap: 1.5rem;
       flex: 0 0 280px;
+      align-self: stretch;
     }
 
     .overview-logo {
       width: min(140px, 100%);
       height: auto;
+      justify-self: center;
+      align-self: center;
+      transform: translate(16px, -14px);
     }
 
     .overview-copy {
@@ -536,6 +540,10 @@
       .overview-side {
         width: 100%;
         flex: none;
+      }
+
+      .overview-logo {
+        transform: none;
       }
 
       .page {

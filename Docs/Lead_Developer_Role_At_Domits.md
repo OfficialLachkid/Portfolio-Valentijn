@@ -8,14 +8,6 @@
   />
 </div>
 
-<div style="text-align: center; margin: 0.25rem 0 1.75rem;">
-  <img
-    src="Images/Domits_Internship/Images/Platform_Showcase/image.png"
-    alt="Domits platform showcase"
-    style="display: inline-block; width: 760px; max-width: 100%; height: auto; border-radius: 18px;"
-  />
-</div>
-
 ## Position Overview
 During my internship at [Domits](https://www.domits.com/), I did not operate only as a feature developer. Within the engineering team, I took on a lead fullstack developer role with responsibility for technical quality, delivery coordination, and release flow.
 
