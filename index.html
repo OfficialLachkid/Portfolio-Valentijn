@@ -699,8 +699,8 @@
           </div> -->
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="Docs/CV.pdf" target="_blank">
-              Download CV (PDF)
+            <a class="btn btn-primary" id="cv-link" href="document-viewer.html?file=Docs/CV.pdf" target="_blank">
+              Open CV (PDF)
             </a>
             <a class="btn" href="#portfolio">View portfolio &darr;</a>
           </div>
@@ -1009,6 +1009,11 @@
       var yearEl = document.getElementById('year');
       if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
+      }
+
+      var cvLinkEl = document.getElementById('cv-link');
+      if (cvLinkEl) {
+        cvLinkEl.href += '&v=' + Date.now();
       }
 
       function revealStaggered(selector, baseDelay, step) {

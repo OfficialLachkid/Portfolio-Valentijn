@@ -196,6 +196,73 @@
       margin: 1.5rem 0;
     }
 
+    .doc-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .doc-toolbar p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .doc-toolbar-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      color: var(--text-main);
+      transition: transform 0.06s ease, box-shadow 0.12s ease,
+        background 0.12s ease, border-color 0.12s ease;
+    }
+
+    .doc-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.9);
+    }
+
+    .doc-btn-primary {
+      background: radial-gradient(circle at 30% 0%, #38bdf8, #0ea5e9 30%, #1e40af);
+      border-color: rgba(56, 189, 248, 0.8);
+      color: #020617;
+      font-weight: 500;
+    }
+
+    .pdf-frame-wrapper {
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(2, 6, 23, 0.95);
+      min-height: 75vh;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 75vh;
+      border: 0;
+      display: block;
+      background: #111827;
+    }
+
     .error-msg {
       color: #fca5a5;
       font-size: 0.9rem;
@@ -253,6 +320,12 @@
       .doc-wrapper {
         padding: 1.4rem 1.25rem 1.75rem;
       }
+
+      .pdf-frame-wrapper,
+      .pdf-frame {
+        min-height: 68vh;
+        height: 68vh;
+      }
     }
   </style>
 </head>
@@ -297,41 +370,103 @@
         return params.get(name);
       }
 
+      function buildVersionedPath(path) {
+        var version = getQueryParam('v');
+        if (!version) {
+          return path;
+        }
+
+        var separator = path.indexOf('?') === -1 ? '?' : '&';
+        return path + separator + 'v=' + encodeURIComponent(version);
+      }
+
+      function showError(message) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = message;
+        contentEl.textContent = '';
+      }
+
+      function renderPdf(filePath, filename) {
+        var pdfUrl = buildVersionedPath(filePath);
+        var toolbarEl = document.createElement('div');
+        toolbarEl.className = 'doc-toolbar';
+
+        var summaryEl = document.createElement('p');
+        summaryEl.textContent = 'Previewing ' + filename + '. Use the buttons on the right if the PDF viewer in your browser is stubborn about refreshes.';
+        toolbarEl.appendChild(summaryEl);
+
+        var actionsEl = document.createElement('div');
+        actionsEl.className = 'doc-toolbar-actions';
+
+        var openEl = document.createElement('a');
+        openEl.className = 'doc-btn doc-btn-primary';
+        openEl.href = pdfUrl;
+        openEl.target = '_blank';
+        openEl.rel = 'noopener noreferrer';
+        openEl.textContent = 'Open PDF';
+        actionsEl.appendChild(openEl);
+
+        var downloadEl = document.createElement('a');
+        downloadEl.className = 'doc-btn';
+        downloadEl.href = pdfUrl;
+        downloadEl.setAttribute('download', filename);
+        downloadEl.textContent = 'Download PDF';
+        actionsEl.appendChild(downloadEl);
+
+        toolbarEl.appendChild(actionsEl);
+
+        var frameWrapperEl = document.createElement('div');
+        frameWrapperEl.className = 'pdf-frame-wrapper';
+
+        var iframeEl = document.createElement('iframe');
+        iframeEl.className = 'pdf-frame';
+        iframeEl.src = pdfUrl + '#view=FitH';
+        iframeEl.title = filename;
+        frameWrapperEl.appendChild(iframeEl);
+
+        contentEl.textContent = '';
+        contentEl.appendChild(toolbarEl);
+        contentEl.appendChild(frameWrapperEl);
+      }
+
       var fileParam = getQueryParam('file');
       var errorEl = document.getElementById('doc-error');
       var contentEl = document.getElementById('markdown-content');
 
       if (!fileParam) {
-        errorEl.style.display = 'block';
-        errorEl.textContent = 'No file specified. Use ?file=Docs/your-file.md in the URL.';
-        contentEl.textContent = '';
+        showError('No file specified. Use ?file=Docs/your-file.md or ?file=Docs/your-file.pdf in the URL.');
       } else {
         var parts = fileParam.split('/');
         var filename = parts[parts.length - 1];
         document.title = filename.replace(/_/g, ' ') + ' - Valentijn Jacobs';
+        var requestPath = buildVersionedPath(fileParam);
 
-        fetch(fileParam)
-          .then(function (res) {
-            if (!res.ok) {
-              throw new Error('Could not load file (' + res.status + ')');
-            }
-            return res.text();
-          })
-          .then(function (text) {
-            var converter = new showdown.Converter({
-              simpleLineBreaks: true,
-              tables: true,
-              strikethrough: true,
-              openLinksInNewWindow: true
+        if (/\.pdf$/i.test(fileParam)) {
+          renderPdf(fileParam, filename);
+        } else if (/\.md$/i.test(fileParam)) {
+          fetch(requestPath)
+            .then(function (res) {
+              if (!res.ok) {
+                throw new Error('Could not load file (' + res.status + ')');
+              }
+              return res.text();
+            })
+            .then(function (text) {
+              var converter = new showdown.Converter({
+                simpleLineBreaks: true,
+                tables: true,
+                strikethrough: true,
+                openLinksInNewWindow: true
+              });
+              var html = converter.makeHtml(text);
+              contentEl.innerHTML = html;
+            })
+            .catch(function (err) {
+              showError('Error loading document: ' + err.message);
             });
-            var html = converter.makeHtml(text);
-            contentEl.innerHTML = html;
-          })
-          .catch(function (err) {
-            errorEl.style.display = 'block';
-            errorEl.textContent = 'Error loading document: ' + err.message;
-            contentEl.textContent = '';
-          });
+        } else {
+          showError('Unsupported document type. Use a markdown or PDF file from the Docs folder.');
+        }
       }
 
       // Simple stagger for fade-in elements on this page
