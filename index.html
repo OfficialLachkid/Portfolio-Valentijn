@@ -699,8 +699,8 @@
           </div> -->
 
           <div class="hero-actions">
-            <a class="btn btn-primary" id="cv-link" href="document-viewer.html?file=Docs/CV.pdf" target="_blank">
-              Open CV (PDF)
+            <a class="btn btn-primary" id="cv-link" href="Docs/CV.pdf" target="_blank" rel="noopener noreferrer">
+              Download CV (PDF)
             </a>
             <a class="btn" href="#portfolio">View portfolio &darr;</a>
           </div>
@@ -1013,7 +1013,9 @@
 
       var cvLinkEl = document.getElementById('cv-link');
       if (cvLinkEl) {
-        cvLinkEl.href += '&v=' + Date.now();
+        var baseHref = cvLinkEl.getAttribute('href');
+        var separator = baseHref.indexOf('?') === -1 ? '?' : '&';
+        cvLinkEl.href = baseHref + separator + 'v=' + Date.now();
       }
 
       function revealStaggered(selector, baseDelay, step) {
