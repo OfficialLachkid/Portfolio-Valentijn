@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -374,6 +374,54 @@
       object-fit: cover;
       display: block;
       transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .card-image--live {
+      position: relative;
+      height: 160px;
+      background:
+        linear-gradient(160deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.98)),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 35%);
+    }
+
+    .card-image--live::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 48px;
+      background: linear-gradient(180deg, rgba(2, 6, 23, 0), rgba(2, 6, 23, 0.84));
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .card-live-frame {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1280px;
+      height: 860px;
+      border: 0;
+      pointer-events: none;
+      transform: translateX(-50%) scale(0.25);
+      transform-origin: top center;
+      display: block;
+      background: #fff;
+    }
+
+    .card-live-caption {
+      position: absolute;
+      left: 0.7rem;
+      right: 0.7rem;
+      bottom: 0.6rem;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #dbeafe;
     }
 
     
@@ -834,6 +882,35 @@
               </div>
               <div class="card-body">
                 Page containing various experiments I conducted during my studies and personal projects.
+              </div>
+              <div class="card-footer">
+                <span class="link-chip"><span>Open overview</span></span>
+              </div>
+            </article>
+          </a>
+
+          <!-- Websites -->
+          <a href="Websites.html" class="card-link">
+            <article class="card fade-in-up">
+              <div class="card-image card-image--live">
+                <iframe
+                  class="card-live-frame"
+                  src="https://villa-whisperer-generator.lovable.app"
+                  loading="lazy"
+                  title="Websites showcase preview"
+                  tabindex="-1"
+                  aria-hidden="true"
+                ></iframe>
+                <div class="card-live-caption">
+                  <span>Website showcase</span>
+                </div>
+              </div>
+              <div class="card-header">
+                <h3 class="card-title">Websites</h3>
+                <span class="card-tag">Showcase</span>
+              </div>
+              <div class="card-body">
+                Dedicated overview of websites I built, using live preview thumbnails so the visuals stay current without storing extra screenshots in this repo.
               </div>
               <div class="card-footer">
                 <span class="link-chip"><span>Open overview</span></span>
