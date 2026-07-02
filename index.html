@@ -657,6 +657,12 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      .hero-name {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -699,11 +705,6 @@
 
       .hero-side {
         margin-top: 1.25rem;
-      }
-
-      /* Optional: let name wrap nicely next to photo on tiny screens */
-      .hero-name {
-        flex-wrap: wrap;
       }
     }
   </style>
@@ -1098,6 +1099,9 @@
       var supportsIntersectionObserver = 'IntersectionObserver' in window;
       var prefersReducedMotion = window.matchMedia
         && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobileViewport = window.matchMedia
+        && window.matchMedia('(max-width: 768px)').matches;
+      var revealThreshold = isMobileViewport ? 0.03 : 0.08;
       var revealObserver = null;
 
       if (supportsIntersectionObserver && !prefersReducedMotion) {
@@ -1111,7 +1115,7 @@
             revealObserver.unobserve(entry.target);
           });
         }, {
-          threshold: 0.08,
+          threshold: revealThreshold,
           rootMargin: '0px 0px -10% 0px'
         });
       }
